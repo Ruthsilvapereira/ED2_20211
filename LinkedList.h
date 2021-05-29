@@ -1,3 +1,6 @@
+//Olá a todos! Estou adiantando a atividade Lista Simplesmente Ligada, conforme video aula disponivel em:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
+//LinkedList.h ======> by Ruth (postada completa com as operaçoes, conforme proposto no video:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view)
+//Lembrando que a lista a ser criada em grupo é a LinkedList.c ===> onde todos vão editar e escrever parte do codigo juntos
 #ifndef DataStructure_LinkedList_h
 #define DataStructure_LinkedList_h
 enum boolean {
