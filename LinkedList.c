@@ -14,7 +14,7 @@
 //
 //		  Divisão da ativiade por alunos, conforme disponivel em:http://www.jppreti.com/2019/07/15/lista-simplesmente-ligada/#LinkedListc e explicado em:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
 //   		3.2.1 init ======> Ruth
-//   		3.2.2 isEmpty ======>
+//   		3.2.2 isEmpty ======> Leandro
 //   		3.2.3 enqueue ======>
 //   		3.2.4 first ======>
 //   		3.2.5 last ======>
@@ -42,4 +42,9 @@
 void init(LinkedList *list) {
     list->first=NULL;
     list->size=0;
+}
+//verifica se a lista está ou não vazia
+//caso a lista esteja vazia, retorna tamanho igual a zero.
+bool isEmpty(LinkedList *list) {
+    return (list->size == 0);
 }
