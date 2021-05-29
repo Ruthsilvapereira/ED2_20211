@@ -2,7 +2,7 @@
 //Estou criando a LinkedListTest.c, disponivel em:http://www.jppreti.com/2019/07/15/lista-simplesmente-ligada/#LinkedListTestc
 //LinkedListTest.c ======> postada completa com as operações, conforme proposto no video:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
 //Lembrando a todos que a unica LinkedList que será editada por todos é a LinkedList.c ===>(.c)<====, postada anteriomente.
-//LinkedList.h  e também a LinkedListTest.c são posta  por apenas um aluno, no caso já postei as duas, by Ruth
+//ATENÇÃO LinkedList.h  e também a LinkedListTest.c são postada  por apenas um aluno, no caso já postei as duas, by Ruth. A unica que todos vão postar juntos é a LinkedList.c ===>(.c)<====
 #include <stdlib.h>
 #include <stdio.h>
 #include "LinkedList.h"
