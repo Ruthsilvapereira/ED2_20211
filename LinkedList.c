@@ -15,7 +15,7 @@
 //		  Divisão da ativiade por alunos, conforme disponivel em:http://www.jppreti.com/2019/07/15/lista-simplesmente-ligada/#LinkedListc e explicado em:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
 //   		3.2.1 init ======> Ruth
 //   		3.2.2 isEmpty ======> Leandro
-//   		3.2.3 enqueue ======>
+//   		3.2.3 enqueue ======> Matheus Santiago
 //   		3.2.4 first ======>
 //   		3.2.5 last ======>
 //   		3.2.6 dequeue ======>
@@ -48,3 +48,19 @@ void init(LinkedList *list) {
 bool isEmpty(LinkedList *list) {
     return (list->size == 0);
 }
+//enqueue (by Matheus Santiago) insere um novo elemento respeitando o conceito de fila ou seja  sera inserido no final da fila
+int enqueue (LinkedList *list, void *data){
+	Node *newNode =(Node*) malloc(sizeof(Node)); // reserva um novo espaço na memoria para caber um nó da lista;
+		if (newNode == NULL) return -1; // caso não haja espaço, é informado ao usuario 
+		newNode -> data = data;
+		newNode -> next = NULL; // recebe o NULL pois será o ultimo da lista, logo, sem proximo.
+		
+		if (isEmpty(list))		// O nó é inserido caso a lista esteja vazia, ele sera o primeiro elemento
+			list -> first = newNode;
+		else{					// Caso não esteja, descobriremos o ultimo e sera inserido após ele.
+			Node *aux = list -> first;
+			while (aux-> next != NULL)
+				aux = aux -> next;	//auxiliar apontara para o primeiro da lista e avançara até encontrar um nó cujo next seja NULL, em outras palavras até o final da lista.
+				aux -> next = newNode;} // ao encontrar é atualizado o valor de next para o endereço do novo nó
+	list -> size++; // Incrementa a quantidade de elementos
+	return 1;} // e retorna a quantidade de elementos inseridos
