@@ -65,7 +65,7 @@ int enqueue (LinkedList *list, void *data){
 	list -> size++; // Incrementa a quantidade de elementos
 	return 1;} // e retorna a quantidade de elementos inseridos
 	
-	//First (by Gabriel Robert) descobre qual o primeiro dado da lista.
-	void* first(LinkedList *list) {
-    		return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
-	}
+//First (by Gabriel Robert) descobre qual o primeiro dado da lista.
+void* first(LinkedList *list) {
+    	return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
+}
