@@ -36,3 +36,13 @@ int main() {
     
     return EXIT_SUCCESS;
 }
+//LinkedListTest.c 
+//LinkedListTest.c:(.text+0x7c): undefined reference to `enqueue'
+//LinkedListTest.c:(.text+0xa7): undefined reference to `enqueue'
+//LinkedListTest.c:(.text+0xd2): undefined reference to `enqueue'
+//LinkedListTest.c:(.text+0xde): undefined reference to `first'
+//LinkedListTest.c:(.text+0x10d): undefined reference to `indexOf'
+//LinkedListTest.c:(.text+0x131): undefined reference to `getPos'
+//LinkedListTest.c:(.text+0x152): undefined reference to `dequeue'
+//LinkedListTest.c:(.text+0x173): undefined reference to `dequeue'
+//LinkedListTest.c:(.text+0x194): undefined reference to `dequeue'
