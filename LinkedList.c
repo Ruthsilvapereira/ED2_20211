@@ -16,7 +16,7 @@
 //   		3.2.1 init ======> Ruth
 //   		3.2.2 isEmpty ======> Leandro
 //   		3.2.3 enqueue ======> Matheus Santiago
-//   		3.2.4 first ======>
+//   		3.2.4 first ======>Gabriel Robert
 //   		3.2.5 last ======>
 //   		3.2.6 dequeue ======>
 //   		3.2.7 pop ======>
@@ -64,3 +64,8 @@ int enqueue (LinkedList *list, void *data){
 				aux -> next = newNode;} // ao encontrar é atualizado o valor de next para o endereço do novo nó
 	list -> size++; // Incrementa a quantidade de elementos
 	return 1;} // e retorna a quantidade de elementos inseridos
+	
+	//First (by Gabriel Robert) descobre qual o primeiro dado da lista.
+	void* first(LinkedList *list) {
+    		return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
+	}
