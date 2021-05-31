@@ -17,7 +17,7 @@
 //   		3.2.2 isEmpty ======> Leandro
 //   		3.2.3 enqueue ======> Matheus Santiago
 //   		3.2.4 first ======>Gabriel Robert
-//   		3.2.5 last ======>
+//   		3.2.5 last ======>Jose Guilherme Neves
 //   		3.2.6 dequeue ======>
 //   		3.2.7 pop ======>
 //   		3.2.8 top ======>
@@ -68,4 +68,16 @@ int enqueue (LinkedList *list, void *data){
 //First (by Gabriel Robert) descobre qual o primeiro dado da lista.
 void* first(LinkedList *list) {
     	return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
+}
+
+// Last (by Jose G. Neves) descobre o ultimo elemento da lista, percorrendo ela a partir do elemento (first) ate encontrar um nó em que o proximo seja (null)
+void* last(LinkedList *list) {
+    void *data = NULL;
+    if (!isEmpty(list)) {      //verifica se a lista nao esta vazia
+        Node *aux = list->first;  //variavel auxiliar aponta para o primeiro nó
+        while (aux->next != NULL)  //enquanto o nó seguinte nao for o ultimo (null)
+            aux = aux->next;   //a auxiliar vai varrendo e verificano os proximos 
+        data = aux->data;   //até encontrar e receber o endereço de memoria do dado do ultimo nó
+    }
+    return data;
 }
