@@ -28,7 +28,7 @@
 //   		3.2.13 addAll ======>
 //   		3.2.14 removePos ======>Wallatan França
 //   		3.2.15 indexOf ======>
-//   		3.2.16 removeData ======>
+//   		3.2.16 removeData ======> Mickael Luiz Dias da Silva
 
 //LinkedListTest.c ======> Ruth (postada completa com as operaçoes, conforme proposto no video:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
 // Lista Simplesmente Ligada atividade dois da plataforma AVA, será feita em grupo ====>  ou seja, a sala toda vai usar esse mesmo local LinkedList.c e trabalhar em equipe
@@ -133,3 +133,38 @@ void* removePos(LinkedList *list, int pos){
 
 
 }
+
+//removeData (by Mickael Luiz)
+//Função que remove algum dado da lista
+bool removeData(LinkedList *list, void *data, compare equal) {
+    if (isEmpty(list)) return -1;
+//Essa etapa verifica se o dado a ser removido é o primeiro da lista e o remove se for.
+Node *nodeRemove = NULL;
+if (equal(list->first->data,data)){
+    nodeRemove = list->first;
+    list->first = list->first->next;
+    free(nodeRemove->data); 
+    free(nodeRemove);
+    list->size--;
+    return true;
+}
+else {
+	//essa etapa procura o dado para remover de nó em nó até o fim da lista
+        Node *aux = list->first;
+        while(aux->next!=NULL && !equal(aux->next->data,data)) {
+            aux=aux->next;
+	
+        if (aux->next!=NULL) {
+            Node *nodeRemove = aux->next;
+            aux->next = nodeRemove->next;
+            free(nodeRemove->data);
+            free(nodeRemove);
+            list->size--;
+            return true;
+        }
+	else {
+            return false;
+        }
+    	}
+}
+	
