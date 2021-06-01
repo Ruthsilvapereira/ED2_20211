@@ -26,7 +26,7 @@
 //   		3.2.11 getPos ======> Alessandra Mirelle
 //   		3.2.12 add ======>
 //   		3.2.13 addAll ======>
-//   		3.2.14 removePos ======>
+//   		3.2.14 removePos ======>Wallatan França
 //   		3.2.15 indexOf ======>
 //   		3.2.16 removeData ======>
 
@@ -125,4 +125,11 @@ void* getPos(LinkedList *list, int pos) {
         return NULL;
     else
         return aux->data;
+}
+
+
+//removePos (by Wallatan França)
+void* removePos(LinkedList *list, int pos){
+
+
 }
