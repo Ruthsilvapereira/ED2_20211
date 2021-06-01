@@ -92,7 +92,7 @@ void* dequeue(LinkedList *list) {
     
     free(trash);     //Libera a memoria
     list->size--;     //Reduz a quantidade de elementos presentes na lista 
-    return data;     //Retorna a lista sem o elemento removido
+    return data;     //Retorna o elemento removido
 }
 
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
