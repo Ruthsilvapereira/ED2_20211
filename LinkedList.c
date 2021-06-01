@@ -20,7 +20,7 @@
 //   		3.2.5 last ======>Jose Guilherme Neves
 //   		3.2.6 dequeue ======> Carlos Henrique Teixeira Carneiro
 //   		3.2.7 pop ======>
-//   		3.2.8 top ======> 
+//   		3.2.8 top ======> Thiago Ramalho Setúbal
 //   		3.2.9 push ======> Vinicius Matusita
 //   		3.2.10 getNodeByPos ======>Lucio Lisboa
 //   		3.2.11 getPos ======> Alessandra Mirelle
@@ -65,6 +65,10 @@ int enqueue (LinkedList *list, void *data){
 	list -> size++; // Incrementa a quantidade de elementos
 	return 1;} // e retorna a quantidade de elementos inseridos
 	
+//top( by Thiago Ramalho) usado somente em pilha, retorna o elemento superior da pilha, ela possui duas funções, retornar o elemento para a parte superior da pilha para permitir modificações, a segunda função é para retornar uma referência constante,com intuito de garantir que não haja modificações acidentaisna pilha.
+void* top(LinkedList *list) {
+    return first(list);
+}
 //First (by Gabriel Robert) descobre qual o primeiro dado da lista.
 void* first(LinkedList *list) {
     	return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
@@ -93,23 +97,6 @@ void* dequeue(LinkedList *list) {
     free(trash);     //Libera a memoria
     list->size--;     //Reduz a quantidade de elementos presentes na lista 
     return data;     //Retorna o elemento removido
-}
-
-//Push (by Vinicius Matusita) a inserção do elemento é feita no topo da lista(inicio da lista).
-int push(LinkedList *list, void *data) {
-    Node *newNode = (Node*) malloc(sizeof(Node));
-    if (newNode==NULL) return -1;
-    newNode->data = data;
-    newNode->next = NULL;
-    
-    if (isEmpty(list))               //verifica se a lista estiver vazia
-        list->first = newNode;       //o first passa a novo nó é o primeiro
-    else {
-        newNode->next = list->first; //passa o topo atual para o segundo da lista
-        list->first = newNode;       //o first passa a novo nó será o topo
-    }
-    list->size++;
-    return 1;
 }
 
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
