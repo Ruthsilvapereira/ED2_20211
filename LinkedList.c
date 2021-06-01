@@ -95,6 +95,23 @@ void* dequeue(LinkedList *list) {
     return data;     //Retorna o elemento removido
 }
 
+//Push (by Vinicius Matusita) a inserção do elemento é feita no topo da lista(inicio da lista).
+int push(LinkedList *list, void *data) {
+    Node *newNode = (Node*) malloc(sizeof(Node));
+    if (newNode==NULL) return -1;
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    if (isEmpty(list))               //verifica se a lista estiver vazia
+        list->first = newNode;       //o first passa a novo nó é o primeiro
+    else {
+        newNode->next = list->first; //passa o topo atual para o segundo da lista
+        list->first = newNode;       //o first passa a novo nó será o topo
+    }
+    list->size++;
+    return 1;
+}
+
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
 
 //getPos (by Alessandra Mirelle) Função que retorna o dado e não o endereço do nó.
