@@ -23,7 +23,7 @@
 //   		3.2.8 top ======> 
 //   		3.2.9 push ======> Vinicius Matusita
 //   		3.2.10 getNodeByPos ======>Lucio Lisboa
-//   		3.2.11 getPos ======>
+//   		3.2.11 getPos ======> Alessandra Mirelle
 //   		3.2.12 add ======>
 //   		3.2.13 addAll ======>
 //   		3.2.14 removePos ======>
@@ -96,3 +96,12 @@ void* dequeue(LinkedList *list) {
 }
 
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
+
+//getPos (by Alessandra Mirelle) Função que retorna o dado e não o endereço do nó.
+void* getPos(LinkedList *list, int pos) {
+    Node *aux = getNodeByPos(list,pos);
+    if (aux==NULL) 
+        return NULL;
+    else
+        return aux->data;
+}
