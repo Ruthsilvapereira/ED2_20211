@@ -22,7 +22,7 @@
 //   		3.2.7 pop ======>
 //   		3.2.8 top ======>
 //   		3.2.9 push ======>
-//   		3.2.10 getNodeByPos ======>
+//   		3.2.10 getNodeByPos ======>Lucio Lisboa
 //   		3.2.11 getPos ======>
 //   		3.2.12 add ======>
 //   		3.2.13 addAll ======>
@@ -81,3 +81,4 @@ void* last(LinkedList *list) {
     }
     return data;
 }
+//GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
