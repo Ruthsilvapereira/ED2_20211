@@ -18,7 +18,7 @@
 //   		3.2.3 enqueue ======> Matheus Santiago
 //   		3.2.4 first ======>Gabriel Robert
 //   		3.2.5 last ======>Jose Guilherme Neves
-//   		3.2.6 dequeue ======>
+//   		3.2.6 dequeue ======> Carlos Henrique Teixeira Carneiro
 //   		3.2.7 pop ======>
 //   		3.2.8 top ======>
 //   		3.2.9 push ======>
@@ -81,4 +81,18 @@ void* last(LinkedList *list) {
     }
     return data;
 }
+
+// Dequeue (by Carlos Henrique T. Carneiro) Função com objetivo de remover o primeiro elemento da lista, se a lista possuir elementos.
+void* dequeue(LinkedList *list) {
+    if (isEmpty(list)) return NULL;    //Retorna valor vazio caso a lista não possua elementos
+	
+    Node *trash = list->first;       //variável que guarda o endereço do nó que será removido
+    list->first = list->first->next;      //O segundo elemento da lista passa a ser o primeiro
+    void *data = trash->data;        //dado do nó a ser removido
+    
+    free(trash);     //Libera a memoria
+    list->size--;     //Reduz a quantidade de elementos presentes na lista 
+    return data;     //Retorna a lista sem o elemento removido
+}
+
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
