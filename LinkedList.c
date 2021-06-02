@@ -117,6 +117,14 @@ int push(LinkedList *list, void *data) {
 }
 
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
+Node* getNodeByPos(LinkedList *list, int pos) {
+    if (isEmpty(list) || pos>=list->size) return NULL;
+
+    Node *aux = list->first;
+
+    for (int count=0;(aux!=NULL && count<pos);count++,aux=aux->next);
+    return aux;
+}
 
 //getPos (by Alessandra Mirelle) Função que retorna o dado e não o endereço do nó.
 void* getPos(LinkedList *list, int pos) {
