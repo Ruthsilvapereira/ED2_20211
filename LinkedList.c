@@ -218,9 +218,9 @@ int indexOf(LinkedList *list, void *data, compare equal) { //retorna a posicao d
     int count=0; //variavel contadora para as posicoes da lista
     Node *aux = list->first; //variavel auxiliar para navegar na lista
 	
-	while(aux!=NULL && !equal(aux->data,data)) {
+	while(aux!=NULL && !equal(aux->data, data)) {
         aux=aux->next;
-        count++;
+        count++; 
     }
     
     return (aux==NULL)?-1:count;
