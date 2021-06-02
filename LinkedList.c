@@ -186,3 +186,21 @@ int add(LinkedList *list, int pos, void *data) { // Função permite adicionar u
     
     return 1;
 }
+
+int addAll(LinkedList *listDest, int pos, LinkedList *listSource) { // Adiciona tudo --- By : Hans Maciel
+    if (listDest==NULL || isEmpty(listDest)) return -1; // verifica se essas listas possuem elementos para que faça sentido a inserção de uma em outra
+    if (listSource==NULL || isEmpty(listSource)) return -2;
+    Node *last = NULL; // verifica se a posição a ser inserida é o início (pos==0)
+    for (last = listSource->first;last->next!=NULL;last=last->next); // se for, teremos que atualizar a variável first de nosso struct LinkedList
+    if (pos == 0) {  // o último nó de nossa lista de origem apontará para o nó que era o first inicialmente
+        last->next = listDest->first; 
+        listDest->first = listSource->first;
+    } else { // Caso a posição a ser inserida não for a de início, precisaremos localizar o nó anterior a posição desejada.
+        Node *aux = getNodeByPos(listDest, (pos-1)); 
+        if (aux==NULL) return -3;        
+        last->next = aux->next; 
+        aux->next = listSource->first;
+    }
+    listDest->size+=listSource->size; //Ao final, basta incrementarmos a quantidade de elementos da lista de destino com a quantidade de elementos da lista de origem e retornar essa quantidade de elementos novos inseridos
+    return listSource->size;
+}
