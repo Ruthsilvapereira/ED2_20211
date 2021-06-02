@@ -135,11 +135,27 @@ void* getPos(LinkedList *list, int pos) {
         return aux->data;
 }
 
-
-//removePos (by Wallatan França)
+// removePos (by Wallatan França) remove um elemento de uma determinada posição
+// cria uma função do tipo vazio e ponteiro
 void* removePos(LinkedList *list, int pos){
-
-
+// verifica se a lista está vazia ou se valor informado da posição da posição é invalido    
+    
+    if (isEmpty(list) || pos>=list->size) return NULL; //se a condição for atendida é retornado null
+    
+    Node *nodeRemove = NULL; // cria uma váriavel auxiliar que vai aponta para o nó a ser removido
+    Node *aux = NULL; // cria uma váriavel auxiliar que vai apontar para o nó anterior do que vai ser removido
+    
+    if (pos<=0) // verifica se é o primeiro elemento da lista
+        return dequeue(list); // caso a condição seja antendida, a lista é retornada para função deque que fara a remoção do nó
+    else // caso a condição anterior não atendida, essa entra em vigor
+        aux = getNodeByPos(list, pos-1); // faz a busca do nó anterior do que será excluido
+    
+    nodeRemove = aux->next; // quarda o nó que será resolvido 
+    aux->next = nodeRemove->next; //faz com que aux->next aponte para para o nó que vem depois do nó que será removido
+    void* dataRemove = nodeRemove->data; // Guarda uma referência para o nó que virá a ser removido
+    free(nodeRemove); // Apaga o nó da memória
+    list->size--; // Reduz os elementos da lista
+    return dataRemove; //retorna os dados
 }
 
 //removeData (by Mickael Luiz)
