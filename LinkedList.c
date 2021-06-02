@@ -43,11 +43,7 @@ void init(LinkedList *list) {
     list->first=NULL;
     list->size=0;
 }
-//verifica se a lista está ou não vazia
-//caso a lista esteja vazia, retorna tamanho igual a zero.
-bool isEmpty(LinkedList *list) {
-    return (list->size == 0);
-}
+
 //enqueue (by Matheus Santiago) insere um novo elemento respeitando o conceito de fila ou seja  sera inserido no final da fila
 int enqueue (LinkedList *list, void *data){
 	Node *newNode =(Node*) malloc(sizeof(Node)); // reserva um novo espaço na memoria para caber um nó da lista;
@@ -64,11 +60,20 @@ int enqueue (LinkedList *list, void *data){
 				aux -> next = newNode;} // ao encontrar é atualizado o valor de next para o endereço do novo nó
 	list -> size++; // Incrementa a quantidade de elementos
 	return 1;} // e retorna a quantidade de elementos inseridos
+
+// Dequeue (by Carlos Henrique T. Carneiro) Função com objetivo de remover o primeiro elemento da lista, se a lista possuir elementos.
+void* dequeue(LinkedList *list) {
+    if (isEmpty(list)) return NULL;    //Retorna valor vazio caso a lista não possua elementos
 	
-//top( by Thiago Ramalho) usado somente em pilha, retorna o elemento superior da pilha, ela possui duas funções, retornar o elemento para a parte superior da pilha para permitir modificações, a segunda função é para retornar uma referência constante,com intuito de garantir que não haja modificações acidentaisna pilha.
-void* top(LinkedList *list) {
-    return first(list);
+    Node *trash = list->first;       //variável que guarda o endereço do nó que será removido
+    list->first = list->first->next;      //O segundo elemento da lista passa a ser o primeiro
+    void *data = trash->data;        //dado do nó a ser removido
+    
+    free(trash);     //Libera a memoria
+    list->size--;     //Reduz a quantidade de elementos presentes na lista 
+    return data;     //Retorna o elemento removido
 }
+
 //First (by Gabriel Robert) descobre qual o primeiro dado da lista.
 void* first(LinkedList *list) {
     	return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
@@ -84,19 +89,6 @@ void* last(LinkedList *list) {
         data = aux->data;   //até encontrar e receber o endereço de memoria do dado do ultimo nó
     }
     return data;
-}
-
-// Dequeue (by Carlos Henrique T. Carneiro) Função com objetivo de remover o primeiro elemento da lista, se a lista possuir elementos.
-void* dequeue(LinkedList *list) {
-    if (isEmpty(list)) return NULL;    //Retorna valor vazio caso a lista não possua elementos
-	
-    Node *trash = list->first;       //variável que guarda o endereço do nó que será removido
-    list->first = list->first->next;      //O segundo elemento da lista passa a ser o primeiro
-    void *data = trash->data;        //dado do nó a ser removido
-    
-    free(trash);     //Libera a memoria
-    list->size--;     //Reduz a quantidade de elementos presentes na lista 
-    return data;     //Retorna o elemento removido
 }
 
 //Push (by Vinicius Matusita) a inserção do elemento é feita no topo da lista(inicio da lista).
@@ -116,6 +108,36 @@ int push(LinkedList *list, void *data) {
     return 1;
 }
 
+void* pop(LinkedList *list) {
+    return dequeue(list);
+}
+
+//top( by Thiago Ramalho) usado somente em pilha, retorna o elemento superior da pilha, ela possui duas funções, retornar o elemento para a parte superior da pilha para permitir modificações, a segunda função é para retornar uma referência constante,com intuito de garantir que não haja modificações acidentaisna pilha.
+void* top(LinkedList *list) {
+    return first(list);
+}
+
+//By Leandro
+//verifica se a lista está ou não vazia
+//caso a lista esteja vazia, retorna tamanho igual a zero.
+bool isEmpty(LinkedList *list) {
+    return (list->size == 0);
+}
+
+//retorna a posicao da lista de um determinado elemento, by Eduardo Hideki and Wenderson
+int indexOf(LinkedList *list, void *data, compare equal) { 
+    if (isEmpty(list)) return -1; //verifica se a lista esta vazia, se estiver vazia ele retorna -1
+    int count=0; //variavel contadora para as posicoes da lista
+    Node *aux = list->first; //variavel auxiliar para navegar na lista
+	
+	while(aux!=NULL && !equal(aux->data, data)) {
+        aux=aux->next;
+        count++; 
+    }
+    
+    return (aux==NULL)?-1:count;
+}
+
 //GetNodeByPos (by Lucio Lisboa) Função com intuito de buscar o endereço de um no na lista
 Node* getNodeByPos(LinkedList *list, int pos) {
     if (isEmpty(list) || pos>=list->size) return NULL;
@@ -133,6 +155,44 @@ void* getPos(LinkedList *list, int pos) {
         return NULL;
     else
         return aux->data;
+}
+
+// BY: GUILHERME MENDES
+int add(LinkedList *list, int pos, void *data) { // Função permite adicionar um único dado a determinada posição da lista
+    if (pos <= 0) return push(list,data);
+    Node *aux = getNodeByPos(list, (pos-1));     // Função auxiliar responsavel por localizar nó da posição anterior da posição que iremos inserir
+    if (aux==NULL) return -2;
+    
+    Node *newNode = (Node*) malloc(sizeof(Node));// Retorna -2 para informar que a posição informada é inválida
+    if (newNode==NULL) return -1;
+    
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    newNode->next = aux->next;                    //Rensponsável por inserir o nó dentro da lista
+    aux->next = newNode;
+    
+    list->size++;
+    
+    return 1;
+}
+
+int addAll(LinkedList *listDest, int pos, LinkedList *listSource) { // Adiciona tudo --- By : Hans Maciel
+    if (listDest==NULL || isEmpty(listDest)) return -1; // verifica se essas listas possuem elementos para que faça sentido a inserção de uma em outra
+    if (listSource==NULL || isEmpty(listSource)) return -2;
+    Node *last = NULL; // verifica se a posição a ser inserida é o início (pos==0)
+    for (last = listSource->first;last->next!=NULL;last=last->next); // se for, teremos que atualizar a variável first de nosso struct LinkedList
+    if (pos == 0) {  // o último nó de nossa lista de origem apontará para o nó que era o first inicialmente
+        last->next = listDest->first; 
+        listDest->first = listSource->first;
+    } else { // Caso a posição a ser inserida não for a de início, precisaremos localizar o nó anterior a posição desejada.
+        Node *aux = getNodeByPos(listDest, (pos-1)); 
+        if (aux==NULL) return -3;        
+        last->next = aux->next; 
+        aux->next = listSource->first;
+    }
+    listDest->size+=listSource->size; //Ao final, basta incrementarmos a quantidade de elementos da lista de destino com a quantidade de elementos da lista de origem e retornar essa quantidade de elementos novos inseridos
+    return listSource->size;
 }
 
 // removePos (by Wallatan França) remove um elemento de uma determinada posição
@@ -190,54 +250,4 @@ else {
             return false;
         }
     	}
-}
-// BY: GUILHERME MENDES
-int add(LinkedList *list, int pos, void *data) { // Função permite adicionar um único dado a determinada posição da lista
-    if (pos <= 0) return push(list,data);
-    Node *aux = getNodeByPos(list, (pos-1));     // Função auxiliar responsavel por localizar nó da posição anterior da posição que iremos inserir
-    if (aux==NULL) return -2;
-    
-    Node *newNode = (Node*) malloc(sizeof(Node));// Retorna -2 para informar que a posição informada é inválida
-    if (newNode==NULL) return -1;
-    
-    newNode->data = data;
-    newNode->next = NULL;
-    
-    newNode->next = aux->next;                    //Rensponsável por inserir o nó dentro da lista
-    aux->next = newNode;
-    
-    list->size++;
-    
-    return 1;
-}
-
-int addAll(LinkedList *listDest, int pos, LinkedList *listSource) { // Adiciona tudo --- By : Hans Maciel
-    if (listDest==NULL || isEmpty(listDest)) return -1; // verifica se essas listas possuem elementos para que faça sentido a inserção de uma em outra
-    if (listSource==NULL || isEmpty(listSource)) return -2;
-    Node *last = NULL; // verifica se a posição a ser inserida é o início (pos==0)
-    for (last = listSource->first;last->next!=NULL;last=last->next); // se for, teremos que atualizar a variável first de nosso struct LinkedList
-    if (pos == 0) {  // o último nó de nossa lista de origem apontará para o nó que era o first inicialmente
-        last->next = listDest->first; 
-        listDest->first = listSource->first;
-    } else { // Caso a posição a ser inserida não for a de início, precisaremos localizar o nó anterior a posição desejada.
-        Node *aux = getNodeByPos(listDest, (pos-1)); 
-        if (aux==NULL) return -3;        
-        last->next = aux->next; 
-        aux->next = listSource->first;
-    }
-    listDest->size+=listSource->size; //Ao final, basta incrementarmos a quantidade de elementos da lista de destino com a quantidade de elementos da lista de origem e retornar essa quantidade de elementos novos inseridos
-    return listSource->size;
-}
-
-int indexOf(LinkedList *list, void *data, compare equal) { //retorna a posicao da lista de um determinado elemento, by Eduardo Hideki and Wenderson
-    if (isEmpty(list)) return -1; //verifica se a lista esta vazia, se estiver vazia ele retorna -1
-    int count=0; //variavel contadora para as posicoes da lista
-    Node *aux = list->first; //variavel auxiliar para navegar na lista
-	
-	while(aux!=NULL && !equal(aux->data, data)) {
-        aux=aux->next;
-        count++; 
-    }
-    
-    return (aux==NULL)?-1:count;
 }
