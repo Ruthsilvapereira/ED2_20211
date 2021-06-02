@@ -19,7 +19,7 @@
 //   		3.2.4 first ======>Gabriel Robert
 //   		3.2.5 last ======>Jose Guilherme Neves
 //   		3.2.6 dequeue ======> Carlos Henrique Teixeira Carneiro
-//   		3.2.7 pop ======>
+//   		3.2.7 pop ======> Zhaira Rachid Jaudy
 //   		3.2.8 top ======> Thiago Ramalho Setúbal
 //   		3.2.9 push ======> Vinicius Matusita
 //   		3.2.10 getNodeByPos ======>Lucio Lisboa
