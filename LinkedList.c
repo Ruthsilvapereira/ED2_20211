@@ -24,7 +24,7 @@
 //   		3.2.9 push ======> Vinicius Matusita
 //   		3.2.10 getNodeByPos ======>Lucio Lisboa
 //   		3.2.11 getPos ======> Alessandra Mirelle
-//   		3.2.12 add ======>
+//   		3.2.12 add ======> Guilherme Mendes 
 //   		3.2.13 addAll ======>
 //   		3.2.14 removePos ======>Wallatan França
 //   		3.2.15 indexOf ======>
@@ -167,4 +167,22 @@ else {
         }
     	}
 }
-	
+// BY: GUILHERME MENDES
+int add(LinkedList *list, int pos, void *data) { // Função permite adicionar um único dado a determinada posição da lista
+    if (pos <= 0) return push(list,data);
+    Node *aux = getNodeByPos(list, (pos-1));     // Função auxiliar responsavel por localizar nó da posição anterior da posição que iremos inserir
+    if (aux==NULL) return -2;
+    
+    Node *newNode = (Node*) malloc(sizeof(Node));// Retorna -2 para informar que a posição informada é inválida
+    if (newNode==NULL) return -1;
+    
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    newNode->next = aux->next;                    //Rensponsável por inserir o nó dentro da lista
+    aux->next = newNode;
+    
+    list->size++;
+    
+    return 1;
+}
