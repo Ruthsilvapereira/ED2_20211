@@ -27,7 +27,7 @@
 //   		3.2.12 add ======> Guilherme Mendes 
 //   		3.2.13 addAll ======>
 //   		3.2.14 removePos ======>Wallatan França
-//   		3.2.15 indexOf ======>
+//   		3.2.15 indexOf ======> by Eduardo Hideki and Wenderson Farias
 //   		3.2.16 removeData ======> Mickael Luiz Dias da Silva
 
 //LinkedListTest.c ======> Ruth (postada completa com as operaçoes, conforme proposto no video:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
@@ -227,4 +227,17 @@ int addAll(LinkedList *listDest, int pos, LinkedList *listSource) { // Adiciona 
     }
     listDest->size+=listSource->size; //Ao final, basta incrementarmos a quantidade de elementos da lista de destino com a quantidade de elementos da lista de origem e retornar essa quantidade de elementos novos inseridos
     return listSource->size;
+}
+
+int indexOf(LinkedList *list, void *data, compare equal) { //retorna a posicao da lista de um determinado elemento, by Eduardo Hideki and Wenderson
+    if (isEmpty(list)) return -1; //verifica se a lista esta vazia, se estiver vazia ele retorna -1
+    int count=0; //variavel contadora para as posicoes da lista
+    Node *aux = list->first; //variavel auxiliar para navegar na lista
+	
+	while(aux!=NULL && !equal(aux->data, data)) {
+        aux=aux->next;
+        count++; 
+    }
+    
+    return (aux==NULL)?-1:count;
 }
