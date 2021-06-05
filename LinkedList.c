@@ -33,7 +33,6 @@
 //LinkedListTest.c ======> Ruth (postada completa com as operaçoes, conforme proposto no video:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
 // Lista Simplesmente Ligada atividade dois da plataforma AVA, será feita em grupo ====>  ou seja, a sala toda vai usar esse mesmo local LinkedList.c e trabalhar em equipe
 // inicio ========>  LinkedList.c
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
@@ -45,21 +44,28 @@ void init(LinkedList *list) {
 }
 
 //enqueue (by Matheus Santiago) insere um novo elemento respeitando o conceito de fila ou seja  sera inserido no final da fila
-int enqueue (LinkedList *list, void *data){
-	Node *newNode =(Node*) malloc(sizeof(Node)); // reserva um novo espaço na memoria para caber um nó da lista;
-		if (newNode == NULL) return -1; // caso não haja espaço, é informado ao usuario 
-		newNode -> data = data;
-		newNode -> next = NULL; // recebe o NULL pois será o ultimo da lista, logo, sem proximo.
+int enqueue (LinkedList *list, void *data) {
+	Node *newNode =(Node*)malloc(sizeof(Node)); 
+	// reserva um novo espaço na memoria para caber um nó da lista;
+	if (newNode == NULL) return -1; 
+	// caso não haja espaço, é informado ao usuario 
+	newNode -> data = data;
+	newNode -> next = NULL; 
+	// recebe o NULL pois será o ultimo da lista, logo, sem proximo.
 		
-		if (isEmpty(list))		// O nó é inserido caso a lista esteja vazia, ele sera o primeiro elemento
-			list -> first = newNode;
-		else{					// Caso não esteja, descobriremos o ultimo e sera inserido após ele.
-			Node *aux = list -> first;
-			while (aux-> next != NULL)
-				aux = aux -> next;	//auxiliar apontara para o primeiro da lista e avançara até encontrar um nó cujo next seja NULL, em outras palavras até o final da lista.
-				aux -> next = newNode;} // ao encontrar é atualizado o valor de next para o endereço do novo nó
+	if (isEmpty(list))		// O nó é inserido caso a lista esteja vazia, ele sera o primeiro elemento
+		list -> first = newNode;
+	else{					// Caso não esteja, descobriremos o ultimo e sera inserido após ele.
+		Node *aux = list -> first;
+		while (aux-> next != NULL)
+			aux = aux -> next;	//auxiliar apontara para o primeiro da lista e avançara até encontrar um nó cujo next seja NULL, em outras palavras até o final da lista.
+		aux -> next = newNode;
+	} 
+	// ao encontrar é atualizado o valor de next para o endereço do novo nó
 	list -> size++; // Incrementa a quantidade de elementos
-	return 1;} // e retorna a quantidade de elementos inseridos
+	return 1;
+
+} // e retorna a quantidade de elementos inseridos
 
 // Dequeue (by Carlos Henrique T. Carneiro) Função com objetivo de remover o primeiro elemento da lista, se a lista possuir elementos.
 void* dequeue(LinkedList *list) {
@@ -76,7 +82,7 @@ void* dequeue(LinkedList *list) {
 
 //First (by Gabriel Robert) descobre qual o primeiro dado da lista.
 void* first(LinkedList *list) {
-    	return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
+    return (isEmpty(list))?NULL:list->first->data; //retornar NULL se a lista estiver vazia.Se não estiver vazia, retorna o endereço de memória do dado no primeiro nó.
 }
 
 // Last (by Jose G. Neves) descobre o ultimo elemento da lista, percorrendo ela a partir do elemento (first) ate encontrar um nó em que o proximo seja (null)
@@ -213,31 +219,29 @@ void* removePos(LinkedList *list, int pos){
     nodeRemove = aux->next; // quarda o nó que será resolvido 
     aux->next = nodeRemove->next; //faz com que aux->next aponte para para o nó que vem depois do nó que será removido
     void* dataRemove = nodeRemove->data; // Guarda uma referência para o nó que virá a ser removido
-    free(nodeRemove); // Apaga o nó da memória
+    free (nodeRemove); // Apaga o nó da memória
     list->size--; // Reduz os elementos da lista
-    return dataRemove; //retorna os dados
+   
+	return dataRemove; //retorna os dados
 }
 
 //removeData (by Mickael Luiz)
 //Função que remove algum dado da lista
 bool removeData(LinkedList *list, void *data, compare equal) {
     if (isEmpty(list)) return -1;
-//Essa etapa verifica se o dado a ser removido é o primeiro da lista e o remove se for.
-Node *nodeRemove = NULL;
-if (equal(list->first->data,data)){
-    nodeRemove = list->first;
-    list->first = list->first->next;
-    free(nodeRemove->data); 
-    free(nodeRemove);
-    list->size--;
-    return true;
-}
-else {
-	//essa etapa procura o dado para remover de nó em nó até o fim da lista
+    Node *nodeRemove = NULL;
+    if (equal(list->first->data,data)) {
+        nodeRemove = list->first;
+        list->first = list->first->next;
+        free(nodeRemove->data);
+        free(nodeRemove);
+        list->size--;
+        return true;
+    } else {
         Node *aux = list->first;
-        while(aux->next!=NULL && !equal(aux->next->data,data)) {
+        while(aux->next!=NULL && !equal(aux->next->data,data))
             aux=aux->next;
-	
+    
         if (aux->next!=NULL) {
             Node *nodeRemove = aux->next;
             aux->next = nodeRemove->next;
@@ -245,9 +249,20 @@ else {
             free(nodeRemove);
             list->size--;
             return true;
-        }
-	else {
+        } else {
             return false;
         }
-    	}
+    }
 }
+//Finalmente compilou sem ERRO usando o Container - goormIDE 
+//COMANDOS
+//gcc LinkedList.c LinkedList.h LinkedListTest.c -o testlist
+//gcc -std=c99 -Wall LinkedList.c LinkedList.h LinkedListTest.c -o testlist
+//./testlist
+//Apresentou o proposto no codigo
+//1
+//2
+//3
+//1
+//2
+//3

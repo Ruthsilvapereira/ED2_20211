@@ -7,16 +7,21 @@
 enum boolean {
     true = 1, false = 0
 };
+
 typedef enum boolean bool;
+
 typedef struct Node {
     void *data;
     struct Node *next;
 }Node;
+
 typedef struct LinkedList {
     Node *first;
     int size;
 }LinkedList;
+
 typedef bool (*compare)(void*,void*);
+
 void init(LinkedList *list);
 int enqueue(LinkedList *list, void *data);
 void* dequeue(LinkedList *list);
@@ -33,4 +38,5 @@ int add(LinkedList *list, int pos, void *data);
 int addAll(LinkedList *listDest, int pos, LinkedList *listSource);
 void* removePos(LinkedList *list, int pos);
 bool removeData(LinkedList *list, void *data, compare equal);
-#endif
+
+ #endif

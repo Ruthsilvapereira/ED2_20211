@@ -3,18 +3,21 @@
 //LinkedListTest.c ======> postada completa com as operações, conforme proposto no video:https://drive.google.com/file/d/1U7DY59DzPNdC5vpBSg_brgJ_WAo-NQHU/view
 //Lembrando a todos que a unica LinkedList que será editada por todos é a LinkedList.c ===>(.c)<====, postada anteriomente.
 //ATENÇÃO LinkedList.h  e também a LinkedListTest.c são postada  por apenas um aluno, no caso já postei as duas, by Ruth. A unica que todos vão postar juntos é a LinkedList.c ===>(.c)<====
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "LinkedList.h"
+
 bool compara(void *data1, void *data2) {
     int *d1 = (int*)data1;
     int *d2 = (int*)data2;
     
     return (*d1==*d2)?true:false;
 }
+
 int main() {
     LinkedList list;
-    init(&list);
+    init (&list);
     
     int *aux = (int *)malloc(sizeof(int));
     *aux=1;
@@ -26,7 +29,7 @@ int main() {
     *aux=3;
     enqueue(&list, aux);
     
-    printf("%d\n",*((int*)first(&list)));
+    printf("%d\n",*((int*) first(&list)));
     printf("%d\n",indexOf(&list,aux,compara));
     printf("%d\n",*((int*)getPos(&list,2)));
     printf("%d\n",*((int*)dequeue(&list)));
