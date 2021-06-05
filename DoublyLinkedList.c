@@ -2,17 +2,19 @@
 //O QUE É?
 //Veremos que o uso da Lista Duplamente Ligada é indicada para situações que precise voltar, ou seja, navegar entre as posições.
 //Caso a necessidade seja apenas de avançar e nunca voltar, então o indicado é a Lista Simplesmente Ligada vista anteriormente.
-//Dito isso, vejamos o funcionamento das funções usadas na Lista Simplesmente Ligada, usando a Lista Duplamente Ligada. Nota-se que as funções são um pouco semelhantes a anterior, porém, as funções são colocadas de forma a corresponder a Lista Duplamente Ligada (bidirecional).
+//Dito isso, vejamos o funcionamento das funções usadas na Lista Simplesmente Ligada, usando a Lista Duplamente Ligada.
+//Nota-se que as funções são um pouco semelhantes a anterior, porém, as funções são colocadas de forma a corresponder a Lista Duplamente Ligada (bidirecional).
 //Biblioteca da Lista Duplamente Ligada (DoublyLinkedList.h)
 //Operações complementares: 
-//          2.2.1 show 
-//          2.2.2 showMem
-//      Descrição da atividade
+//          2.2.1 show: exibe os dados de todos os nós da lista
+//          2.2.2 showMem: exibe a organização na memória de todos os nós da lista
+//Descrição da atividade
 //   	DoublyLinkedList.c
 //   	DoublyLinkedList.h
 //   	DoublyLinkedListTest.c 
 //   	Por gentileza coloque o nome a frente da sua escolha de implementação, comente sempre seu nome em tudo que foi feito e detalhe para melhor endendimento dos demais.
-//		  Divisão da atividade por alunos, conforme Lista Simplesmente Ligada (primeira lista). Porém, agora será para Lista Duplamente Ligada (caso queira mudar a função de escolha é só editar).
+// Divisão da atividade por alunos, conforme Lista Simplesmente Ligada (primeira lista). Porém, agora será para Lista Duplamente Ligada
+//(caso queira mudar a função de escolha é só editar).
 //   		3.2.1 init ======> Ruth
 //   		3.2.2 isEmpty ======> Leandro
 //   		3.2.3 enqueue ======> Matheus Santiago
