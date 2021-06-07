@@ -57,3 +57,21 @@ void init(DoublyLinkedList *list) {
     list->size=0;
 }
 
+int add(DoublyLinkedList *list, int pos, void *data) {
+    Node *aux = getNodeByPos(list, pos);
+    if (aux==NULL) return -2;
+
+    Node newNode = (Node) malloc(sizeof(Node));
+    if (newNode==NULL) return -1;
+
+    newNode->data = data;
+    newNode->next = aux;
+    newNode->previous = aux->previous;
+
+    aux->previous->next = newNode;
+    aux->previous = newNode;
+
+    list->size++;
+
+    return 1;
+}
