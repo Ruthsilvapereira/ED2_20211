@@ -75,3 +75,20 @@ int add(DoublyLinkedList *list, int pos, void *data) {
 
     return 1;
 }
+
+int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource) {
+    Node *aux = getNodeByPos(listDest, pos);
+    if (aux==NULL) return -2;
+    
+    if (isEmpty(listSource)) return -1;
+    
+    listSource->first->previous->next = aux;
+    listSource->first->next->previous = aux->previous;
+    
+    aux->previous->next = listSource->first->next;
+    aux->previous = listSource->first->previous;
+    
+    listDest->size+=listSource->size;
+    
+    return listSource->size;
+}
