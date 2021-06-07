@@ -33,11 +33,27 @@
 //   		3.2.16 removeData ======> Mickael Luiz Dias da Silva
 //          2.2.1 show ======>
 //          2.2.2 showMem ======>
-// início
+//implementação da Lista Duplamente Ligada: DoublyLinkedList.c
+//Resultado esperado: compilação correta e sem ERRO na execução
+//Início
 #include <stdio.h>
 #include <stdlib.h>
 #include "DoublyLinkedList.h"
-//Feat: init by Ruth
+
+//Alguns pontos e diferenças da Lista Duplamente Ligada X Lista Simplesmente Ligada
+//Agora na Lista Duplamente Ligada temos dois ponteiros: next e previous
+//Lista Duplamente Ligada permite a navegação nos dois sentidos, ela ocupa mais memória que a anterior (Lista Simplesmente Ligada)
+//Essa Lista Duplamente Ligada será feita no formato circular, por isso, diferente da Lista Simplesmente ligada onde first: nulo  (list->first=NULL;) agora first: nó lixo  (list->first=trashNode;) recebe trashNode
+//init ==> inicializa a DoublyLinkedList.h
 void init(DoublyLinkedList *list) {
-	//RUTH
+//trashNode: nó lixo, ou sentinela (permite que mesmo a lista estando vazia ela aponta para um nó: (list->first=trashNode;)
+    Node *trashNode = (Node*)malloc(sizeof(Node));
+    trashNode->data=NULL;
+//uso do nó trash: pressupõe que a lista nunca vai estará vazia, o first nunca será nulo
+//Dito isso, diferentemente da Lista Simplesmente Ligada não precisamos verificar se a lista está vazia
+    trashNode->previous=trashNode;
+    trashNode->next=trashNode;
+    list->first=trashNode;
+    list->size=0;
 }
+
