@@ -57,3 +57,51 @@ void init(DoublyLinkedList *list) {
     list->size=0;
 }
 
+int add(DoublyLinkedList *list, int pos, void *data) {
+    Node *aux = getNodeByPos(list, pos);
+    if (aux==NULL) return -2;
+
+    Node newNode = (Node) malloc(sizeof(Node));
+    if (newNode==NULL) return -1;
+
+    newNode->data = data;
+    newNode->next = aux;
+    newNode->previous = aux->previous;
+
+    aux->previous->next = newNode;
+    aux->previous = newNode;
+
+    list->size++;
+
+    return 1;
+}
+
+int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource) {
+    Node *aux = getNodeByPos(listDest, pos);
+    if (aux==NULL) return -2;
+    
+    if (isEmpty(listSource)) return -1;
+    
+    listSource->first->previous->next = aux;
+    listSource->first->next->previous = aux->previous;
+    
+    aux->previous->next = listSource->first->next;
+    aux->previous = listSource->first->previous;
+    
+    listDest->size+=listSource->size;
+    
+    return listSource->size;
+}
+
+int indexOf(DoublyLinkedList *list,void *data,compare equal) {
+    if (isEmpty(list)) return -1;
+    int count=0;
+    Node *aux = list->first->next;
+    
+    while(aux!=list->first && !equal(aux->data,data)) {
+        aux=aux->next;
+        count++;
+    }
+    
+    return (aux==list->first)?-1:count;
+}
