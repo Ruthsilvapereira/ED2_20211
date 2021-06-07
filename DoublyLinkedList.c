@@ -92,3 +92,16 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource) {
     
     return listSource->size;
 }
+
+int indexOf(DoublyLinkedList *list,void *data,compare equal) {
+    if (isEmpty(list)) return -1;
+    int count=0;
+    Node *aux = list->first->next;
+    
+    while(aux!=list->first && !equal(aux->data,data)) {
+        aux=aux->next;
+        count++;
+    }
+    
+    return (aux==list->first)?-1:count;
+}
