@@ -75,6 +75,16 @@ int enqueue(DoublyLinkedList *list, void *data){
 	list -> size++; // incrementa a quantidade de elementos na lista
 	return 1;}
 
+// GetNodeByPos por Lucio Lisboa, função com o proposito de encontrar um nó em uma posição especifica da lista e retorna-lo. Função identica a de LinkedList
+Node* getNodeByPos(DoublyLinkedList *list,int pos) {
+    //condição para checar se a lista esta vazia ou se a posição desejada é superior ao tamanho da lista, caso qualquer uma seja verdadeira, retorna nulo
+    if (isEmpty(list) || pos>=list->size) return NULL;
+    //gera uma copia do ponteiro que aponta o primeiro nó da função na variavel aux
+    Node *aux = list->first->next;
+    //estrutura de repetição que caminha do primeiro nó até a posição desejada ou até o ultimo nó da lista e retorna ele para a função principal
+    for (int count=0;(aux!=list->first && count<pos);count++,aux=aux->next);
+    return aux;
+}
 
 int add(DoublyLinkedList *list, int pos, void *data) {
     Node *aux = getNodeByPos(list, pos);
