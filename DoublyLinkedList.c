@@ -57,6 +57,25 @@ void init(DoublyLinkedList *list) {
     list->size=0;
 }
 
+
+// enqueue by Matheus Santiago, semelhante a lista ligada, este enqueue tem a função de inserir um novo elemento respeitando o conceito de fila.
+int enqueue(DoublyLinkedList *list, void *data){
+	Node *newNode = (Node*)malloc(sizeof(Node));
+	if (newNode==NULL) return -1; 
+	// caso nao haja espaço informa ao usuario
+	
+	newNode -> data= data; // o novo nó aponta para a data
+	newNode -> next = list -> first; //o novo nó avança e a lista aponta para o primeiro
+	newNode -> previous = list -> first -> previous; 
+	// o novo nó aponta para anterior e a lista aponta para o primeiro que aponta para o anterior	
+	list -> first ->previous ->next = newNode;
+	list -> first -> previous = newNode;
+	// o ultimo nó aponta para o novo nó;
+	
+	list -> size++; // incrementa a quantidade de elementos na lista
+	return 1;}
+
+
 int add(DoublyLinkedList *list, int pos, void *data) {
     Node *aux = getNodeByPos(list, pos);
     if (aux==NULL) return -2;
