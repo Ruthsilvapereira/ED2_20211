@@ -29,9 +29,9 @@
 //   		3.2.12 add ======> Guilherme Mendes 
 //   		3.2.13 addAll ======> Hans Maciel
 //   		3.2.14 removePos ======>Wallatan França
-//   		3.2.15 indexOf ======> by Eduardo Hideki and Wenderson Farias
+//   		3.2.15 indexOf ======> by Eduardo Hideki  
 //   		3.2.16 removeData ======> Mickael Luiz Dias da Silva
-//          2.2.1 show ======>
+//          2.2.1 show ======> Wenderson Farias
 //          2.2.2 showMem ======>
 //implementação da Lista Duplamente Ligada: DoublyLinkedList.c
 //Resultado esperado: compilação correta e sem ERRO na execução
@@ -123,4 +123,13 @@ int indexOf(DoublyLinkedList *list,void *data,compare equal) {
     }
     
     return (aux==list->first)?-1:count;
+}
+
+//Exibe os dados de todos os nós da lista;
+void show(DoublyLinkedList *list, printNode print) {
+    Node *aux = list->first->next;
+    while (aux!=list->first) {
+        print(aux->data);
+        aux=aux->next;
+    }
 }
