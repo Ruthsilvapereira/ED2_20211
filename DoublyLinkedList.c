@@ -179,3 +179,12 @@ void show(DoublyLinkedList *list, printNode print) {
         aux=aux->next;
     }
 }
+//top( by Thiago Ramalho) usado somente em pilha, retorna o elemento superior da pilha, ela possui duas funções, retornar o elemento para a parte superior da pilha para permitir modificações, a segunda função é para retornar uma referência constante,com intuito de garantir que não haja modificações acidentaisna pilha.
+void* pop (DoublyLinkedList *list) {
+	return dequeue(list);}
+void* top (DoublyLinkedList *list){
+	return first (list);}
+bool isEmpty(DoublyLinkedList *list) {
+	return (list -> size==0);
+		
+		
