@@ -89,6 +89,22 @@ void* dequeue(LinkedList *list) {
     return data;     //Retorna o elemento removido
 }
 
+//Push por Vinicius Matusita, faz a inserna  inserção do elemento no inicio como na simplesmente ligada, porem com mais 2 ponteiros.
+int push(DoublyLinkedList *list, void *data) {
+    Node *newNode = (Node*) malloc(sizeof(Node));
+    if (newNode==NULL) return -1;
+    newNode->data = data; 
+    
+    newNode->next = list->first->next; //novo ó que recebe list, first, next
+    newNode->previous = list->first; //previous que recebe list,first que esta apontando para o inicio 
+    list->first->next->previous = newNode; // recebe o novo nó
+    list->first->next = newNode;
+    
+    list->size++;
+    
+    return 1;
+}
+
 // GetNodeByPos por Lucio Lisboa, função com o proposito de encontrar um nó em uma posição especifica da lista e retorna-lo. Função identica a de LinkedList
 Node* getNodeByPos(DoublyLinkedList *list,int pos) {
     //condição para checar se a lista esta vazia ou se a posição desejada é superior ao tamanho da lista, caso qualquer uma seja verdadeira, retorna nulo
