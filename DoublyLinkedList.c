@@ -75,6 +75,20 @@ int enqueue(DoublyLinkedList *list, void *data){
 	list -> size++; // incrementa a quantidade de elementos na lista
 	return 1;}
 
+// Dequeue (by Carlos Henrique T. Carneiro) Função com objetivo de remover o primeiro elemento da lista, se a lista possuir elementos.
+void* dequeue(LinkedList *list) {
+    if (isEmpty(list)) return NULL;    //Retorna valor vazio caso a lista não possua elementos
+	
+    Node *trash = list->first;       //variável que guarda o endereço do nó que será removido
+    list->first = list->first->next;      //O segundo elemento da lista passa a ser o primeiro
+    
+    void *data = trash->data;        //dado do nó a ser removido
+    
+    free(trash);     //Libera a memoria
+    list->size--;     //Reduz a quantidade de elementos presentes na lista 
+    return data;     //Retorna o elemento removido
+}
+
 // GetNodeByPos por Lucio Lisboa, função com o proposito de encontrar um nó em uma posição especifica da lista e retorna-lo. Função identica a de LinkedList
 Node* getNodeByPos(DoublyLinkedList *list,int pos) {
     //condição para checar se a lista esta vazia ou se a posição desejada é superior ao tamanho da lista, caso qualquer uma seja verdadeira, retorna nulo
