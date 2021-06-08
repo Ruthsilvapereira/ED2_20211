@@ -100,6 +100,12 @@ Node* getNodeByPos(DoublyLinkedList *list,int pos) {
     return aux;
 }
 
+// getpos por Alessandra Mirelle, tem a mesma função que na simplesmente ligada, onde a função retorna o dado e não o endereço do nó.
+void* getPos(DoublyLinkedList *list,int pos) {
+    Node *res = getNodeByPos(list,pos);
+    return (res==NULL)?NULL:res->data;
+}
+
 int add(DoublyLinkedList *list, int pos, void *data) {
     Node *aux = getNodeByPos(list, pos);
     if (aux==NULL) return -2;
