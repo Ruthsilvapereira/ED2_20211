@@ -91,7 +91,7 @@ void* dequeue(LinkedList *list) {
 
 //first (by Gabriel Robert) descobre qual o primeiro dado da lista.
 void* first(DoublyLinkedList *list) {
-    return list->first->next->data; //assim como na "lista simplesmente ligada" o "first"retorna o endereço de memória do dado no primeiro nó,
+    return list->first->next->data; //assim como na "lista simplesmente ligada" o "first" retorna o endereço de memória do dado no primeiro nó,
 	//porém não contem mais a função "(isEmpty(list))?NULL" para retornar NULL se o endereço estiver Vazio.
 }
 
