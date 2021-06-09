@@ -136,6 +136,22 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource) {
     return listSource->size;
 }
 
+//removePos (By Wallatan França)  remove um elemento de uma determinada posição
+void* removePos(DoublyLinkedList *list, int pos) {
+    if (isEmpty(list) || pos>->size) return NULL;
+    
+    Node *nodeRemove = getNodeByPos(list, pos);
+    
+    nodeRemove->previous->next = nodeRemove->next;
+    nodeRemove->next->previous = nodeRemove->previous;
+    
+    void* dataRemove = nodeRemove->data;
+    free(nodeRemove);
+    list->size--;
+    
+    return dataRemove;
+}
+
 int indexOf(DoublyLinkedList *list,void *data,compare equal) {
     if (isEmpty(list)) return -1;
     int count=0;
