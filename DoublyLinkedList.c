@@ -30,9 +30,9 @@
 //   		3.2.13 addAll ======> Hans Maciel
 //   		3.2.14 removePos ======>Wallatan França
 //   		3.2.15 indexOf ======> by Eduardo Hideki  
-//   		3.2.16 removeData ======> Mickael Luiz Dias da Silva
+//   		3.2.16 removeData ======>
 //          2.2.1 show ======> Wenderson Farias
-//          2.2.2 showMem ======>
+//          2.2.2 showMem ======> Mickael Luiz Dias da Silva
 //implementação da Lista Duplamente Ligada: DoublyLinkedList.c
 //Resultado esperado: compilação correta e sem ERRO na execução
 //Início
@@ -89,6 +89,34 @@ void* dequeue(LinkedList *list) {
     return data;     //Retorna o elemento removido
 }
 
+//first (by Gabriel Robert) descobre qual o primeiro dado da lista.
+void* first(DoublyLinkedList *list) {
+    return list->first->next->data; //assim como na "lista simplesmente ligada" o "first" retorna o endereço de memória do dado no primeiro nó,
+	//porém não contem mais a função "(isEmpty(list))?NULL" para retornar NULL se o endereço estiver Vazio.
+}
+
+//last (by José Guilherme Neves), tem a mesma funçao da lista simplesmente ligada, onde retorna o endereço de memoria do ultimo nó
+void* last(DoublyLinkedList *list) {
+    return list->first->previous->data;
+}
+
+
+//Push por Vinicius Matusita, faz a inserna  inserção do elemento no inicio como na simplesmente ligada, porem com mais 2 ponteiros.
+int push(DoublyLinkedList *list, void *data) {
+    Node *newNode = (Node*) malloc(sizeof(Node));
+    if (newNode==NULL) return -1;
+    newNode->data = data; 
+    
+    newNode->next = list->first->next; //novo ó que recebe list, first, next
+    newNode->previous = list->first; //previous que recebe list,first que esta apontando para o inicio 
+    list->first->next->previous = newNode; // recebe o novo nó
+    list->first->next = newNode;
+    
+    list->size++;
+    
+    return 1;
+}
+
 // GetNodeByPos por Lucio Lisboa, função com o proposito de encontrar um nó em uma posição especifica da lista e retorna-lo. Função identica a de LinkedList
 Node* getNodeByPos(DoublyLinkedList *list,int pos) {
     //condição para checar se a lista esta vazia ou se a posição desejada é superior ao tamanho da lista, caso qualquer uma seja verdadeira, retorna nulo
@@ -98,6 +126,12 @@ Node* getNodeByPos(DoublyLinkedList *list,int pos) {
     //estrutura de repetição que caminha do primeiro nó até a posição desejada ou até o ultimo nó da lista e retorna ele para a função principal
     for (int count=0;(aux!=list->first && count<pos);count++,aux=aux->next);
     return aux;
+}
+
+// getpos por Alessandra Mirelle, tem a mesma função que na simplesmente ligada, onde a função retorna o dado e não o endereço do nó.
+void* getPos(DoublyLinkedList *list,int pos) {
+    Node *aux = getNodeByPos(list,pos);
+    return (aux==NULL)?NULL:aux->data;
 }
 
 int add(DoublyLinkedList *list, int pos, void *data) {
@@ -174,3 +208,23 @@ void show(DoublyLinkedList *list, printNode print) {
         aux=aux->next;
     }
 }
+//top( by Thiago Ramalho) usado somente em pilha, retorna o elemento superior da pilha, ela possui duas funções, retornar o elemento para a parte superior da pilha para permitir modificações, a segunda função é para retornar uma referência constante,com intuito de garantir que não haja modificações acidentaisna pilha.
+void* pop (DoublyLinkedList *list) {
+	return dequeue(list);}
+void* top (DoublyLinkedList *list){
+	return first (list);}
+bool isEmpty(DoublyLinkedList *list) {
+	return (list -> size==0);}
+
+// Esta função mostra a estrutura em memória da lista duplamente ligada
+void showMem(DoublyLinkedList *list) {
+    printf("Trash Node: %p\n\n",list->first);
+    Node *aux = list->first->next;
+    printf("Node Addr  : Previous    - Data        - Next\n\n");
+    while (aux!=list->first) {
+        printf("%p: %p - %p - %p\n",aux, aux->previous, aux->data, aux->next);
+        aux=aux->next;
+    }
+}
+		
+		
