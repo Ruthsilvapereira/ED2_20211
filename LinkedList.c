@@ -227,7 +227,7 @@ void* removePos(LinkedList *list, int pos){
 
 //removeData (by Mickael Luiz)
 //Função que remove algum dado da lista
-bool removeData(LinkedList *list, void *data, compare equal) {
+int removeData(LinkedList *list, void *data, compare equal) {
     if (isEmpty(list)) return -1;
     Node *nodeRemove = NULL;
     if (equal(list->first->data,data)) {
