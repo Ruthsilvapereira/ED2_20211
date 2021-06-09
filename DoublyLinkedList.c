@@ -137,19 +137,20 @@ int addAll(DoublyLinkedList *listDest, int pos, DoublyLinkedList *listSource) {
 }
 
 //removePos (By Wallatan França)  remove um elemento de uma determinada posição
+// cria uma função do tipo vazio e ponteiro
 void* removePos(DoublyLinkedList *list, int pos) {
-    if (isEmpty(list) || pos>->size) return NULL;
+    if (isEmpty(list) || pos>->size) return NULL; //se a condição for atendida é retornado null
     
-    Node *nodeRemove = getNodeByPos(list, pos);
+    Node *nodeRemove = getNodeByPos(list, pos); // cria uma váriavel auxiliar que vai receber um nó de uma posição da lista
     
-    nodeRemove->previous->next = nodeRemove->next;
-    nodeRemove->next->previous = nodeRemove->previous;
+    nodeRemove->previous->next = nodeRemove->next; // NodeRemove recebe o próximo nó a ele, e atribui ele como o valor do next do nó anterior a ele
+    nodeRemove->next->previous = nodeRemove->previous; // Atribui o valor de previous para o privious do próximo nó
     
-    void* dataRemove = nodeRemove->data;
-    free(nodeRemove);
-    list->size--;
+    void* dataRemove = nodeRemove->data; // Guarda uma referência para o nó que virá a ser removido
+    free(nodeRemove); // Apaga o nó da memória
+    list->size--; // Reduz os elementos da lista
     
-    return dataRemove;
+    return dataRemove; //retorna os dados
 }
 
 int indexOf(DoublyLinkedList *list,void *data,compare equal) {
