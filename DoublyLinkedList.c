@@ -95,6 +95,11 @@ void* first(DoublyLinkedList *list) {
 	//porém não contem mais a função "(isEmpty(list))?NULL" para retornar NULL se o endereço estiver Vazio.
 }
 
+//last (by José Guilherme Neves), tem a mesma funçao da lista simplesmente ligada, onde retorna o endereço de memoria do ultimo nó
+void* last(DoublyLinkedList *list) {
+    return list->first->previous->data;
+}
+
 
 //Push por Vinicius Matusita, faz a inserna  inserção do elemento no inicio como na simplesmente ligada, porem com mais 2 ponteiros.
 int push(DoublyLinkedList *list, void *data) {
