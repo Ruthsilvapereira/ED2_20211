@@ -30,9 +30,9 @@
 //   		3.2.13 addAll ======> Hans Maciel
 //   		3.2.14 removePos ======>Wallatan França
 //   		3.2.15 indexOf ======> by Eduardo Hideki  
-//   		3.2.16 removeData ======> Mickael Luiz Dias da Silva
+//   		3.2.16 removeData ======>
 //          2.2.1 show ======> Wenderson Farias
-//          2.2.2 showMem ======>
+//          2.2.2 showMem ======> Mickael Luiz Dias da Silva
 //implementação da Lista Duplamente Ligada: DoublyLinkedList.c
 //Resultado esperado: compilação correta e sem ERRO na execução
 //Início
@@ -197,6 +197,17 @@ void* pop (DoublyLinkedList *list) {
 void* top (DoublyLinkedList *list){
 	return first (list);}
 bool isEmpty(DoublyLinkedList *list) {
-	return (list -> size==0);
+	return (list -> size==0);}
+
+// Esta função mostra a estrutura em memória da lista duplamente ligada
+void showMem(DoublyLinkedList *list) {
+    printf("Trash Node: %p\n\n",list->first);
+    Node *aux = list->first->next;
+    printf("Node Addr  : Previous    - Data        - Next\n\n");
+    while (aux!=list->first) {
+        printf("%p: %p - %p - %p\n",aux, aux->previous, aux->data, aux->next);
+        aux=aux->next;
+    }
+}
 		
 		
