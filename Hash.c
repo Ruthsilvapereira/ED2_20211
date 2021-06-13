@@ -9,7 +9,7 @@
 //Hash: não aceita dados duplos (exemplo: nome do aluno, nome do aluno) 
 //       Funções Hash a ser implementada
 //       5.2.1 initHash ======> Ruth
-//       5.2.2 hash ======>
+//       5.2.2 hash ======> Matheus Santiago
 //       5.2.3 containsKey ======>
 //       5.2.4 put ======>
 //       5.2.5 get ======>
@@ -36,6 +36,13 @@ void initHash(HashStruct *hashStruct) {
 bool isHashEmpty(HashStruct *hashStruct) {
     return hashStruct->size==0;
 }
+// hash (by Matheus Santiago) : Recebe uma chave e calcula qual posição deveremos inserir o dado associado a chave. A chave pode ser um nome, numero ou codigo de barras, normalmente é um dado unico.
+int hash(char *key){
+	int sum = 0;
+	for (int i =0; key[i] != 0;  i++){  // percorre todos os caracteres da string passada
+// Acumula os códigos ascii de cada letra com um peso, perceba que o codigo ascii é multiplicado por um peso baseado em sua posição. Caso contrário a palavra "ALO" e "OLA" teriam o mesmo codigo de hash
+		sum += key[i]*(i+1); } 
+	return sum%MAX; } // retorna o resto da divisão 
 
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
 //gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o teste1234

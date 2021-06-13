@@ -58,6 +58,12 @@ int main() {
     strcpy(c->email,"ruthsilva1994@gmail.com.br");
 	strcpy(c->cpf,"055.555.555-55");
     put(&hashes, c->email, c, comparaChaves);
+	
+	c = (Cliente *)malloc(sizeof(Cliente));
+	strcpy(c->nome,"Matheus");
+	strcpy(c->email,"matheus.ssantiag@gmail.com.br");
+	strcpy(c->cpf,"066.666.666-66");
+	put(&hashes, c->email, c,comparaChaves);
        
     showHashStruct(&hashes, printCliente);
     return 0;
