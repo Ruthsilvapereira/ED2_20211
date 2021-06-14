@@ -10,7 +10,7 @@
 //       Funções Hash a ser implementada
 //       5.2.1 initHash ======> Ruth
 //       5.2.2 hash ======> Matheus Santiago
-//       5.2.3 containsKey ======>
+//       5.2.3 containsKey ======> Leandro Klein
 //       5.2.4 put ======>
 //       5.2.5 get ======>
 //       5.2.6 removeKey ======>
@@ -43,6 +43,16 @@ int hash(char *key){
 // Acumula os códigos ascii de cada letra com um peso, perceba que o codigo ascii é multiplicado por um peso baseado em sua posição. Caso contrário a palavra "ALO" e "OLA" teriam o mesmo codigo de hash
 		sum += key[i]*(i+1); } 
 	return sum%MAX; } // retorna o resto da divisão 
+
+// containsKey (by Leandro Klein) : verificar se a chave já existe na tabela de hash.
+bool containsKey(HashStruct *hashStruct, char *key, compare equal) {
+    //calcula a posição
+    int hashValue = hash(key);//função para descobrir em que lista está a chave.
+    //busca na fila a posição da chave
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal); //A função indexOf retorna a posição da chave na lista. Caso o retorno seja -1 a chave não está na lista.
+    
+    return (pos!=-1)?true:false;
+}
 
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
 //gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o teste1234
