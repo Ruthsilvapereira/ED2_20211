@@ -11,7 +11,7 @@
 //       5.2.1 initHash ======> Ruth
 //       5.2.2 hash ======> Matheus Santiago
 //       5.2.3 containsKey ======> Leandro Klein
-//       5.2.4 put ======>
+//       5.2.4 put ======> Wenderson Farias
 //       5.2.5 get ======>
 //       5.2.6 removeKey ======>
 //       5.2.7 showHashStruct ======>
@@ -52,6 +52,19 @@ bool containsKey(HashStruct *hashStruct, char *key, compare equal) {
     int pos = indexOf(&hashStruct->hashes[hashValue], key, equal); //A função indexOf retorna a posição da chave na lista. Caso o retorno seja -1 a chave não está na lista.
     
     return (pos!=-1)?true:false;
+}
+
+// put by Wenderson Farias / verifica se a chave ja foi inserida na tabela
+//                         / caso nao, então é inserido um novo elemento na tabela.
+int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
+    if (!containsKey(hashStruct, key, equal) {
+        //adiciona na fila que está na posição devolvida pela função hash
+        int res = enqueue(&hashStruct->hashes[hash(key)],data);
+        //incrementa a qtde de elementos baseado na quantidade inserida por enqueue
+        hashStruct->size+=res;
+        return res;
+    }
+    return 0;
 }
 
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
