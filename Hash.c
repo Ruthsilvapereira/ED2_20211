@@ -12,7 +12,7 @@
 //       5.2.2 hash ======> Matheus Santiago
 //       5.2.3 containsKey ======> Leandro Klein
 //       5.2.4 put ======> Wenderson Farias
-//       5.2.5 get ======>
+//       5.2.5 get ======> Carlos Henrique Teixeira Carneiro
 //       5.2.6 removeKey ======>
 //       5.2.7 showHashStruct ======>
 
@@ -67,6 +67,18 @@ int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
     return 0;
 }
 
+//Função get by Carlos Henrique: Reqaliza busca no codigo e retorna o dado procurado, se não houverem dados retorna o primeiro nó (sentinela) de valor nulo.
+void* get(HashStruct *hashStruct, char *key, compare equal) {
+    // descobre em qual fila/lista está o dado
+    int hashValue = hash(key);
+    //first é nó sentinela, começamos do segundo nó
+    Node *aux = hashStruct->hashes[hashValue].first->next;
+    // procuramos o dado na lista
+    while(aux!=hashStruct->hashes[hashValue].first && !equal(aux->data, key))
+        aux=aux->next;
+    return aux->data;
+}	
+	
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
 //gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o teste1234
 //./teste1234
