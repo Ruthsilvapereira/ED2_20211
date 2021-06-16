@@ -79,7 +79,7 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
     return aux->data;
 }	
 
-//Função removeKey (by Wallatan França)	
+//Função removeKey (by Wallatan França)	remove um par (chave, valor)
 void* removeKey(HashStruct *hashStruct, char *key, compare equal) {
     int hashValue = hash(key);
     int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
