@@ -78,7 +78,15 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
         aux=aux->next;
     return aux->data;
 }	
-	
+
+//Função removeKey (by Wallatan França)	
+void* removeKey(HashStruct *hashStruct, char *key, compare equal) {
+    int hashValue = hash(key);
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
+    void* result = removePos(&hashStruct->hashes[hashValue], pos);
+    if (result!=NULL) hashStruct->size--;
+    return result;
+}
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
 //gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o teste1234
 //./teste1234
