@@ -101,6 +101,12 @@ int main() {
 	strcpy(c->email,"klein.leandro@outlook.com");
 	strcpy(c->cpf,"101.111.010-11");
 	put(&hashes, c->email, c, comparaChaves);
+
+    c = (Cliente *)malloc(sizeof(Cliente));
+	strcpy(c->nome,"Wenderson f");
+	strcpy(c->email,"wenderson.f@estudante.ifmt.edu.br");
+	strcpy(c->cpf,"115.115.115-15");
+	put(&hashes, c->email, c, comparaChaves);
   
     showHashStruct(&hashes, printCliente);
     return 0;
