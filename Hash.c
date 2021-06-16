@@ -107,6 +107,6 @@ void showHashStruct(HashStruct *hashStruct, printNode print) {
     }
 }
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
-//gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o teste1234
-//./teste1234
+//gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o hash
+//./hash
 //OBSERVAÇÃO: Usar o .h e .c da DoublyLinkedList no comando (DoublyLinkedList.h HashTest.c), pois na biblioteca da Hash tem o include de DoublyLinkedList
