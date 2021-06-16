@@ -13,7 +13,7 @@
 //       5.2.3 containsKey ======> Leandro Klein
 //       5.2.4 put ======> Wenderson Farias
 //       5.2.5 get ======> Carlos Henrique Teixeira Carneiro
-//       5.2.6 removeKey ======> Wallatan França
+//       5.2.6 removeKey ======> Wallatan França / Mickael Luiz
 //       5.2.7 showHashStruct ======> Lucio Lisboa
 
 #include <stdio.h>
@@ -79,11 +79,14 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
     return aux->data;
 }	
 
-//Função removeKey (by Wallatan França)	remove um par (chave, valor)
-void* removeKey(HashStruct *hashStruct, char *key, compare equal) { 
-    int hashValue = hash(key); // após calcular o hash da chave enviada, atribui o valor a váriavel do tipo hashValue
-    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal); // a váriavel pos tipo int, recebe a posição encontrada por indexOf com base nos parâmetros passados 
-    void* result = removePos(&hashStruct->hashes[hashValue], pos); 
+//Função removeKey (by Wallatan França / Mickael Luiz)	remove um par (chave, valor)
+	//Caminha até posição do valor a ser removido
+void* removeKey(HashStruct *hashStruct, char *key, compare equal) {
+    int hashValue = hash(key);
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
+	//remove o valor da posição
+    void* result = removePos(&hashStruct->hashes[hashValue], pos);
+	//Verifica se é o unico nó da lista, se nao for, diminui um valor de size em 1
     if (result!=NULL) hashStruct->size--;
     return result;
 }
