@@ -80,10 +80,9 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
 }	
 
 //Função removeKey (by Wallatan França / Mickael Luiz)	remove um par (chave, valor)
-	//Caminha até posição do valor a ser removido
 void* removeKey(HashStruct *hashStruct, char *key, compare equal) {
-    int hashValue = hash(key);
-    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);
+    int hashValue = hash(key);// após calcular o hash da chave enviada, atribui o valor a váriavel do tipo hashValue
+    int pos = indexOf(&hashStruct->hashes[hashValue], key, equal);// a váriavel pos tipo int, recebe a posição encontrada por indexOf com base nos parâmetros passados
 	//remove o valor da posição
     void* result = removePos(&hashStruct->hashes[hashValue], pos);
 	//Verifica se é o unico nó da lista, se nao for, diminui um valor de size em 1
