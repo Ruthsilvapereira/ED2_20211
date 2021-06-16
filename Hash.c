@@ -37,12 +37,29 @@ bool isHashEmpty(HashStruct *hashStruct) {
     return hashStruct->size==0;
 }
 // hash (by Matheus Santiago) : Recebe uma chave e calcula qual posição deveremos inserir o dado associado a chave. A chave pode ser um nome, numero ou codigo de barras, normalmente é um dado unico.
-int hash(char *key){
-	int sum = 0;
-	for (int i =0; key[i] != 0;  i++){  // percorre todos os caracteres da string passada
-// Acumula os códigos ascii de cada letra com um peso, perceba que o codigo ascii é multiplicado por um peso baseado em sua posição. Caso contrário a palavra "ALO" e "OLA" teriam o mesmo codigo de hash
-		sum += key[i]*(i+1); } 
-	return sum%MAX; } // retorna o resto da divisão 
+int hash(char *key) {
+    int sum = 0;
+    // percorremos todos os caracteres da string passada
+    for (int i = 0; key[i]!=0;i++) {
+         //acumulamos os códigos ascii de cada letra com um peso
+        sum+=key[i]*(i+1);
+    }
+    return sum%MAX; //retorna o resto da divisão
+}
+// put by Wenderson Farias / verifica se a chave ja foi inserida na tabela
+// caso nao, então é inserido um novo elemento na tabela.
+int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
+	//alterado 
+    if (!containsKey(hashStruct, key, equal)){
+        //adiciona na fila que está na posição devolvida pela função hash
+        int res = enqueue(&hashStruct->hashes[hash(key)],data);
+        //incrementa a qtde de elementos baseado na quantidade inserida por enqueue
+        hashStruct->size+=res;
+        return res;
+    }
+
+    return 0;
+}
 
 // containsKey (by Leandro Klein) : verificar se a chave já existe na tabela de hash.
 bool containsKey(HashStruct *hashStruct, char *key, compare equal) {
@@ -54,18 +71,6 @@ bool containsKey(HashStruct *hashStruct, char *key, compare equal) {
     return (pos!=-1)?true:false;
 }
 
-// put by Wenderson Farias / verifica se a chave ja foi inserida na tabela
-//                         / caso nao, então é inserido um novo elemento na tabela.
-int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
-    if (!containsKey(hashStruct, key, equal) {
-        //adiciona na fila que está na posição devolvida pela função hash
-        int res = enqueue(&hashStruct->hashes[hash(key)],data);
-        //incrementa a qtde de elementos baseado na quantidade inserida por enqueue
-        hashStruct->size+=res;
-        return res;
-    }
-    return 0;
-}
 
 //Função get by Carlos Henrique: Reqaliza busca no codigo e retorna o dado procurado, se não houverem dados retorna o primeiro nó (sentinela) de valor nulo.
 void* get(HashStruct *hashStruct, char *key, compare equal) {
