@@ -13,8 +13,8 @@
 //       5.2.3 containsKey ======> Leandro Klein
 //       5.2.4 put ======> Wenderson Farias
 //       5.2.5 get ======> Carlos Henrique Teixeira Carneiro
-//       5.2.6 removeKey ======>
-//       5.2.7 showHashStruct ======>
+//       5.2.6 removeKey ======> Wallatan França
+//       5.2.7 showHashStruct ======> Lucio Lisboa
 
 #include <stdio.h>
 #include <stdlib.h>
