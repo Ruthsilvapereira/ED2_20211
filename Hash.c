@@ -78,7 +78,17 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
         aux=aux->next;
     return aux->data;
 }	
-	
+
+
+//função ShowHashStruct por Lucio Lisboa. Função com o proposito de exibir os pares armazenados, ou seja, mostra quantos hash tem e quantos elementos cada hash tem
+void showHashStruct(HashStruct *hashStruct, printNode print) {
+    printf("There are %d elements in the Hash\n\n",hashStruct->size);
+    for (int i=0; i < MAX; i++) {
+        printf("Hash %d has %d elements: ",i,hashStruct->hashes[i].size);
+        show(&hashStruct->hashes[i],print);
+        printf("\n");
+    }
+}
 //Comandos para compilar codigo completo no goormIDE (Disponivel em: http://www.jppreti.com/2019/07/29/tabela-hash/#Biblioteca)
 //gcc DoublyLinkedList.c Hash.c Hash.h DoublyLinkedList.h HashTest.c -o teste1234
 //./teste1234
