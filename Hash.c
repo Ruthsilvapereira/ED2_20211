@@ -55,7 +55,7 @@ int put(HashStruct *hashStruct, char *key, void *data, compare equal)  {
         int res = enqueue(&hashStruct->hashes[hash(key)],data);
         //incrementa a qtde de elementos baseado na quantidade inserida por enqueue
         hashStruct->size+=res;
-        return res;
+        return res;, m
     }
 
     return 0;
@@ -82,8 +82,14 @@ void* get(HashStruct *hashStruct, char *key, compare equal) {
     while(aux!=hashStruct->hashes[hashValue].first && !equal(aux->data, key))
         aux=aux->next;
     return aux->data;
-}	
-
+}
+// função hash(thiago ramalho) gera uma chave e calcula qual a posição em que deve-se inserir o dado associado a chave, na qual a chave pode ser um nome, código de barras ou número, mas na maioria dos casos é um dado único
+int hash(char *key) {
+    int sum = 0;
+    for (int i = 0; key[i]!=0;i++) {
+        sum+=key[i]*(i+1);
+    }
+    return sum%MAX;
 //Função removeKey (by Wallatan França / Mickael Luiz)	remove um par (chave, valor)
 void* removeKey(HashStruct *hashStruct, char *key, compare equal) {
     int hashValue = hash(key);// após calcular o hash da chave enviada, atribui o valor a váriavel do tipo hashValue
