@@ -31,3 +31,9 @@ void sha256_finalize_hex(struct sha256 *sha, char *dst_hex65);
 void sha256_finalize_bytes(struct sha256 *sha, void *dst_bytes32);
 
 #endif
+//sha256.c e sha256.h será necessaria para rodar a Blockchain
+//Disponivel em: https://github.com/983/SHA-256/blob/main/sha256.h
+//Comando goormIDE
+//gcc Blockchain.h BlockchainTest.c Blockchain.c -o Blockchain
+//./Blockchain
+//ou então: gcc Blockchain.h BlockchainTest.c Blockchain.c sha256.h sha256.c -o Blockchain
