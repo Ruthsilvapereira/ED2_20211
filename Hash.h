@@ -14,6 +14,8 @@
 
 #define MAX 10
 
+//vetor do tipo DoublyLinkedList, ou seja, tipo Lista Duplamente Ligada
+
 typedef struct HashStruct {
     DoublyLinkedList hashes[MAX];
     int size;
