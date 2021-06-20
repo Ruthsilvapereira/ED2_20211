@@ -3,7 +3,7 @@
 //=======================================================================================================================
 //Definir o que é Blockchain ==========> 
 //initBlockchain ==========> Ruth
-//hash_to_string ==========> 
+//hash_to_string ==========> Matheus Santiago
 //calculateHash ==========> 
 //calculateBlockHash ==========> 
 //generateNextBlock ==========> Wenderson Farias
@@ -38,8 +38,13 @@
 //}
 
 
-//hash_to_string
-
+//hash_to_string (by Matheus Santiago) : Procedimento que transforma um hash de 32 bytes em uma string de 64 characteres: 
+static void hash_to_string(char string [65], const uint8_t hash[32]){
+	size_t i; // monta uma string com 64 caracteres hexadecimais
+	for (i=0; i< 32; i++){
+		// 2x hexadecimal em 2 caracteres
+		string += sprintf(string,"%02x", hash[i]);}
+}
 
 
 //calculateHash
@@ -67,6 +72,7 @@ Block* generateNextBlock(Blockchain *blockchain, float data) {
     
     return newBlock;
 }
+
 
 
 //isValidNewBlock
