@@ -55,7 +55,7 @@ static void hash_to_string(char string [65], const uint8_t hash[32]){
 
 
 
-// generateNextBlock by Wenderson Farias -- Esta função gera uma novo bloco
+// generateNextBlock by Wenderson Farias -- Esta função gera um novo bloco
 // usando o hash do bloco anterior e a data definida pelo usuario.
 Block* generateNextBlock(Blockchain *blockchain, float data) {
     //pegamos uma referência ao último bloco da lista
