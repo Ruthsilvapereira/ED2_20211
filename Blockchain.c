@@ -4,8 +4,9 @@
 //Definir o que é Blockchain ==========> 
 //initBlockchain ==========> Ruth
 //hash_to_string ==========> 
-//calculateHash e calculateBlockHash ==========> 
-//generateNextBlock ==========> 
+//calculateHash ==========> 
+//calculateBlockHash ==========> 
+//generateNextBlock ==========> Wenderson Farias
 //getLatestBlock ==========> 
 //isValidNewBlock ==========> 
 //isBlockchainValid ==========> 
@@ -36,3 +37,48 @@
   
 //}
 
+
+//hash_to_string
+
+
+
+//calculateHash
+
+
+
+//calculateBlockHash
+
+
+
+// generateNextBlock by Wenderson Farias -- Esta função gera uma novo bloco
+// usando o hash do bloco anterior e a data definida pelo usuario.
+Block* generateNextBlock(Blockchain *blockchain, float data) {
+    //pegamos uma referência ao último bloco da lista
+    Block *previousBlock = getLatestBlock(blockchain);
+    Block *newBlock = (Block*)malloc(sizeof(Block));
+    
+    newBlock->data = data;
+    newBlock->previousHash = previousBlock->hash;
+    newBlock->index = previousBlock->index+1;
+    //pegamos a data e hora atual
+    newBlock->timestamp = time(NULL);
+    //calculamos o hash do novo bloco
+    newBlock->hash = calculateBlockHash(newBlock);
+    
+    return newBlock;
+}
+
+
+//isValidNewBlock
+
+
+
+//isBlockchainValid
+
+
+
+//addBlock
+
+
+
+//getLatestBlock
