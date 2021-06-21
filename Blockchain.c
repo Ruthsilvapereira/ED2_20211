@@ -8,9 +8,9 @@
 //calculateBlockHash ==========> 
 //generateNextBlock ==========> Wenderson Farias
 //getLatestBlock ==========> 
-//isValidNewBlock ==========> Gabriel Robert
+//isValidNewBlock ==========> 
 //isBlockchainValid ==========> Jose Guilherme
-//addBlock ==========> 
+//addBlock ==========> Gabriel Robert
 //Incluir testes em ponteiro/BlockchainTest.c ==========> 
 //=======================================================================================================================
 //Atenção: para rodar a Blockchain sem alteração, conforme exemplo em: http://www.jppreti.com/2019/08/05/blockchain/
@@ -91,8 +91,15 @@ bool isBlockchainValid(Blockchain *blockchain) {
 }
 
 
-//addBlock
-
+//addBlock (by Gabriel Robert) : adiciona um novo bloco.
+int addBlock(Blockchain *blockchain, Block *newBlock) {
+    if (isValidNewBlock(newBlock, getLatestBlock(blockchain))) { // faz a validação, valida o bloco novo e pega a ultima posição do bloco change.
+        newBlock->previousBlock = getLatestBlock(blockchain); // função que faz a troca de posição.
+        blockchain->latestBlock = newBlock; // a blockchange recebe o bloco novo.
+        return 1;
+    }
+    return -1;
+}
 
 
 //getLatestBlock
