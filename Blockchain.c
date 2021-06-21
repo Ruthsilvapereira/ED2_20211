@@ -10,7 +10,7 @@
 //getLatestBlock ==========> 
 //isValidNewBlock ==========> 
 //isBlockchainValid ==========> 
-//addBlock ==========> 
+//addBlock ==========> Gabriel Robert
 //Incluir testes em ponteiro/BlockchainTest.c ==========> 
 //=======================================================================================================================
 //Atenção: para rodar a Blockchain sem alteração, conforme exemplo em: http://www.jppreti.com/2019/08/05/blockchain/
