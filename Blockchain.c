@@ -96,9 +96,9 @@ int addBlock(Blockchain *blockchain, Block *newBlock) {
     if (isValidNewBlock(newBlock, getLatestBlock(blockchain))) { // faz a validação, valida o bloco novo e pega a ultima posição do blockchain.
         newBlock->previousBlock = getLatestBlock(blockchain); // função que faz a troca de posição e libera a ultima posição do blockchain.
         blockchain->latestBlock = newBlock; // a ultima posição do blockchain recebe o bloco novo.
-        return 1; //se os requisitos for atendidos rebe 1.
+        return 1; //se os requisitos for atendidos retorna 1.
     }
-    return -1; //se não recebe menos -1.
+    return -1; //se não retorna menos -1.
 }
 
 
