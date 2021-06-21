@@ -82,8 +82,8 @@ Block* generateNextBlock(Blockchain *blockchain, float data) {
 //isBlockchainValid (by Jose Guilherme) : Faz a validacao da integridade da cadeia de blocos (blockchain)
 bool isBlockchainValid(Blockchain *blockchain) {
     Block *aux = getLatestBlock(blockchain);// bloco aux recebe o ultimo bloco da blockchain
-    while (aux!=blockchain->genesisBlock) {
-        if (!isValidNewBlock(aux, aux->previousBlock))
+    while (aux!=blockchain->genesisBlock) { 
+        if (!isValidNewBlock(aux, aux->previousBlock)) // chama a funcao de validacao do bloco, com o bloco auxiliar e o anterior a esse
             return false;
         aux = aux->previousBlock;
     }
