@@ -9,7 +9,7 @@
 //generateNextBlock ==========> Wenderson Farias
 //getLatestBlock ==========> 
 //isValidNewBlock ==========> 
-//isBlockchainValid ==========> 
+//isBlockchainValid ==========> Jose Guilherme
 //addBlock ==========> Gabriel Robert
 //Incluir testes em ponteiro/BlockchainTest.c ==========> 
 //=======================================================================================================================
