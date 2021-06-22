@@ -7,7 +7,7 @@
 //calculateHash ==========> Wallatan França
 //calculateBlockHash ==========> Carlos Henrique Teixeira Carneiro
 //generateNextBlock ==========> Wenderson Farias
-//getLatestBlock ==========> 
+//getLatestBlock ==========> Leandro Klein
 //isValidNewBlock ==========> Lucio Lisboa
 //isBlockchainValid ==========> Jose Guilherme
 //addBlock ==========> Gabriel Robert
@@ -98,6 +98,7 @@ Block* generateNextBlock(Blockchain *blockchain, float data) {
     return newBlock;
 }
 
+//Devolve o ponteiro latestBlock, por Leandro Klein. Função para saber qual o último bloco da lista.
 Block* getLatestBlock(Blockchain *blockchain) {
     return blockchain->latestBlock;
 }
