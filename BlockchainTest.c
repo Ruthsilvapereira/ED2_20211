@@ -1,7 +1,7 @@
 //Olá a todos!
-//Teste funções e caso sua tentativa não rodar direito, deixa ela inativada em comentário // para que o colega tente fazer rodar corretamente.
-//BlockchainTest.c feita de forma colaborativa
-//No demais seguimos conforme as anteriores, atenciosamente: Ruth
+//Teste as funções e caso sua tentativa não rodar direito, deixa ela inativada em comentário // para que o colega tente fazer rodar corretamente.
+//BlockchainTest.c é feita de forma colaborativa
+//No demais, seguimos conforme as anteriores, atenciosamente: Ruth
 #include "Blockchain.h"
 
 int main() {

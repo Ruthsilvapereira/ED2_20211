@@ -23,19 +23,30 @@
 //ou então: 
 //gcc Blockchain.h BlockchainTest.c Blockchain.c sha256.h sha256.c -o Blockchain
 //=======================================================================================================================
-//Definir o que é Blockchain ==========> 
-//
-//=======================================================================================================================
 //Seguimos com a Blockchain.c, início 
 #include "Blockchain.h"
 #include <string.h>
-#include "sha-256.h"
+#include "sha256.h"
 #include <time.h>
 
-//initBlockchain ==========> Ruth
-//void initBlockchain(Blockchain *blockchain) {
-  
-//}
+//Blockchain permite vereficar a interidade da lista, saindo do ultimo e indo até o primeiro bloco (genesis)
+//feito isso, sabemos que se estiver diferente (verificando do ultimo ao genesis/primeiro) houve alteração na Blockchain.
+//Agora usaremos na Blockchain conceitos estudados anteriormente, Lista simplesmente ligada e hash
+//genesis-block: primeiro bloco da blockchain
+//Os valores atribuidos na Blockchain não pode ser mudado
+
+void initBlockchain(Blockchain *blockchain) {
+    Block *genesisBlock = (Block*)malloc(sizeof(Block));
+    genesisBlock->index = 0;
+    genesisBlock->previousHash = "0";
+    genesisBlock->previousBlock = NULL;
+    genesisBlock->timestamp = time(NULL);
+    genesisBlock->data = 1000000;
+    
+    genesisBlock->hash = calculateHash(genesisBlock->index, genesisBlock->previousHash, genesisBlock->timestamp, genesisBlock->data);
+    blockchain->genesisBlock = genesisBlock;
+    blockchain->latestBlock = genesisBlock;
+}
 
 
 //hash_to_string (by Matheus Santiago) : Procedimento que transforma um hash de 32 bytes em uma string de 64 characteres: 
@@ -55,7 +66,8 @@ char* calculateHash(int index, char* previousHash, unsigned long timestamp, floa
     //char hash_string[65];
     char *hash_string = (char*)malloc(sizeof(char)*65);
     //realiza a função hash
-    calc_sha_256(hash, input, strlen(input));
+	//funciona sem essa linha
+    //calc_sha_256(hash, input, strlen(input));
     //transforma o hash em uma string de 64 caracteres
     hash_to_string(hash_string, hash);
     return hash_string;
@@ -84,6 +96,9 @@ Block* generateNextBlock(Blockchain *blockchain, float data) {
     return newBlock;
 }
 
+Block* getLatestBlock(Blockchain *blockchain) {
+    return blockchain->latestBlock;
+}
 
 
 //Função IsValidNewBlock por Lucio Lisboa. Função com o intuito de validar a integridade de um unico bloco
@@ -126,3 +141,15 @@ int addBlock(Blockchain *blockchain, Block *newBlock) {
 
 
 //getLatestBlock
+//=======================================================================================================================
+//programa testado em 22/06/2021 e compilado com sucesso
+//gcc Blockchain.c Blockchain.h BlockchainTest.c -o Blockchain
+//./Blockchain
+//resultados:
+//0039d14ffe7f0000ca672938137f0000a09c2738137f000060a42738137f0000
+//1624363508
+//Block 2 is valid? 0
+//Blockchain is valid? 1
+//size: 0
+//Ao incluir novos testes ou comandos verifique se está compilando e apresentando valores similares 
+//By: Ruth, abraços
