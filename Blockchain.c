@@ -60,7 +60,7 @@ static void hash_to_string(char string [65], const uint8_t hash[32]){
 }
 
 
-//calculateHash (by Wallatan França)
+//calculateHash (by Wallatan França) Função que transforma os dados de comprimento variável em fixo, retornando o resultado em forma de string de 64 caracteres
 char* calculateHash(int index, char* previousHash, unsigned long timestamp, float data) {
     char input[1024];
     sprintf(input, "%i%s%lu%.8f",index,previousHash, timestamp, data);
