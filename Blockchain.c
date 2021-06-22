@@ -75,9 +75,21 @@ Block* generateNextBlock(Blockchain *blockchain, float data) {
 
 
 
-//isValidNewBlock
-
-
+//Função IsValisNewBlock por Lucio Lisboa. Função com o intuito de validar a integridade de um unico bloco
+bool isValidNewBlock(Block* newBlock, Block* previousBlock) {
+    //Condição para checar se o index do bloco anterior é diferente do bloco atual, se for retorna false
+    if (previousBlock->index + 1 != newBlock->index) {
+        return false;
+    //Condição para checar se a hash do bloco anterior é diferente do bloco atual, se for retorna false
+    } else if (previousBlock->hash != newBlock->previousHash) {
+        return false;
+    //Condição para comparar a string criada a partir da hash do novo bloco com a string do bloco que atualmente é o novo bloco, se forem distintos retonar false
+    } else if (strcmp(calculateBlockHash(newBlock),newBlock->hash)!=0) {
+        return false;
+    }
+    //Se nenhuma das condições anteriores forem atendidas, o novo bloco foi validado e retorna true
+    return true;
+}
 
 //isBlockchainValid (by Jose Guilherme) : Faz a validacao da integridade da cadeia de blocos (blockchain)
 bool isBlockchainValid(Blockchain *blockchain) {
