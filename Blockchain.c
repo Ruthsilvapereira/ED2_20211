@@ -5,7 +5,7 @@
 //initBlockchain ==========> Ruth
 //hash_to_string ==========> Matheus Santiago
 //calculateHash ==========> Wallatan França
-//calculateBlockHash ==========> 
+//calculateBlockHash ==========> Carlos Henrique Teixeira Carneiro
 //generateNextBlock ==========> Wenderson Farias
 //getLatestBlock ==========> 
 //isValidNewBlock ==========> Lucio Lisboa
@@ -61,9 +61,10 @@ char* calculateHash(int index, char* previousHash, unsigned long timestamp, floa
     return hash_string;
 }
 
-//calculateBlockHash
-
-
+//calculateBlockHash (by Carlos Henrique) -- esta função calcula o hash do bloco.
+char* calculateBlockHash(Block *block) {
+    return calculateHash(block->index, block->previousHash, block->timestamp, block->data);
+}
 
 // generateNextBlock by Wenderson Farias -- Esta função gera um novo bloco
 // usando o hash do bloco anterior e a data definida pelo usuario.
