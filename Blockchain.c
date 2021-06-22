@@ -8,7 +8,7 @@
 //calculateBlockHash ==========> 
 //generateNextBlock ==========> Wenderson Farias
 //getLatestBlock ==========> 
-//isValidNewBlock ==========> 
+//isValidNewBlock ==========> Lucio Lisboa
 //isBlockchainValid ==========> Jose Guilherme
 //addBlock ==========> Gabriel Robert
 //Incluir testes em ponteiro/BlockchainTest.c ==========> 
@@ -75,7 +75,7 @@ Block* generateNextBlock(Blockchain *blockchain, float data) {
 
 
 
-//Função IsValisNewBlock por Lucio Lisboa. Função com o intuito de validar a integridade de um unico bloco
+//Função IsValidNewBlock por Lucio Lisboa. Função com o intuito de validar a integridade de um unico bloco
 bool isValidNewBlock(Block* newBlock, Block* previousBlock) {
     //Condição para checar se o index do bloco anterior é diferente do bloco atual, se for retorna false
     if (previousBlock->index + 1 != newBlock->index) {
