@@ -16,6 +16,8 @@
 //Atenção: para rodar a Blockchain sem alteração, conforme exemplo em: http://www.jppreti.com/2019/08/05/blockchain/
 //é necessário:
 //sha256.c e sha256.h (incluída por Ruth)
+//A biblioteca SHA-256 pode ser baixada aqui: https://raw.githubusercontent.com/jppreti/EstruturaDadosC/master/datastructure/sha-256.c
+//o importante é usar uma biblioteca SHA256, escolha a que for melhor para seu uso. Deixo uma sha256.c e sha256.h, as que me ajudou nos meus testes
 //Disponivel em: https://github.com/983/SHA-256/blob/main/sha256.c e https://github.com/983/SHA-256/blob/main/sha256.h
 //Comando goormIDE para rodar comandos completos de http://www.jppreti.com/2019/08/05/blockchain/
 //gcc Blockchain.h BlockchainTest.c Blockchain.c -o Blockchain
