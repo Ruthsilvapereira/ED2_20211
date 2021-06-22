@@ -4,7 +4,7 @@
 //Definir o que é Blockchain ==========> 
 //initBlockchain ==========> Ruth
 //hash_to_string ==========> Matheus Santiago
-//calculateHash ==========> 
+//calculateHash ==========> Wallatan França
 //calculateBlockHash ==========> 
 //generateNextBlock ==========> Wenderson Farias
 //getLatestBlock ==========> 
@@ -47,9 +47,19 @@ static void hash_to_string(char string [65], const uint8_t hash[32]){
 }
 
 
-//calculateHash
-
-
+//calculateHash (by Wallatan França)
+char* calculateHash(int index, char* previousHash, unsigned long timestamp, float data) {
+    char input[1024];
+    sprintf(input, "%i%s%lu%.8f",index,previousHash, timestamp, data);
+    uint8_t hash[32]; //vetor de 32 bytes de inteiros unsigned [0-255] (256/8 = 32)
+    //char hash_string[65];
+    char *hash_string = (char*)malloc(sizeof(char)*65);
+    //realiza a função hash
+    calc_sha_256(hash, input, strlen(input));
+    //transforma o hash em uma string de 64 caracteres
+    hash_to_string(hash_string, hash);
+    return hash_string;
+}
 
 //calculateBlockHash
 
