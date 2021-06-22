@@ -16,11 +16,16 @@ int main() {
     
     Block *newBlock3 = generateNextBlock(&blockchain,250.0);
     addBlock(&blockchain, newBlock3);
+
+    Block *newBlock4 = generateNextBlock(&blockchain,333.0);
+    addBlock(&blockchain, newBlock4);
     
-    printf("Block 2 is valid? %i\n",isValidNewBlock(newBlock2, blockchain.genesisBlock));
-    newBlock2->data = 74.00;
+    printf("Block 4 is valid? %i\n",isValidNewBlock(newBlock4, blockchain.genesisBlock));
+    //newBlock2->data = 74.00;
     printf("Blockchain is valid? %i\n",isBlockchainValid(&blockchain));
     printf("size: %u\n",blockchain.latestBlock->index);
     return 0;
+
+
 }
 //Precisamos da sha256.c e sha256.h na Blockchain, ambas incluida completa. By Ruth
