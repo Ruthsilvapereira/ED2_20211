@@ -1,7 +1,7 @@
 //Olá a todos! Estou adiantando a atividade Blockchain do AVA
 //Por gentileza coloque o nome à frente da sua escolha de implementação, comente sempre seu nome em tudo que foi feito e detalhe para melhor entendimento dos demais.
 //=======================================================================================================================
-//Definir o que é Blockchain ==========> 
+//Definir o que é Blockchain ==========>Thiago Ramalho
 //initBlockchain ==========> Ruth
 //hash_to_string ==========> Matheus Santiago
 //calculateHash ==========> Wallatan França
@@ -15,6 +15,9 @@
 //=======================================================================================================================
 //Atenção: para rodar a Blockchain sem alteração, conforme exemplo em: http://www.jppreti.com/2019/08/05/blockchain/
 //é necessário:
+//oque é blockchain (Thiago Ramalho)
+//Blockchain é uma espécie de cadeia de blocos na qual cada um contém um arquivo e um hash, em que garante que as informações deste bloco de dados não foram violadas. Todo bloco criado portará seu prório hash e a do bloco anterior, e assim, criando conexão entre blocos
+
 //sha256.c e sha256.h (incluída por Ruth)
 //A biblioteca SHA-256 pode ser baixada aqui: https://raw.githubusercontent.com/jppreti/EstruturaDadosC/master/datastructure/sha-256.c
 //o importante é usar uma biblioteca SHA256, escolha a que for melhor para seu uso. Deixo uma sha256.c e sha256.h, as que me ajudou nos meus testes
