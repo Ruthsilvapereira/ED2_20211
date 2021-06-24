@@ -11,7 +11,7 @@
 //isValidNewBlock ==========> Lucio Lisboa
 //isBlockchainValid ==========> Jose Guilherme
 //addBlock ==========> Gabriel Robert
-//Incluir testes em ponteiro/BlockchainTest.c ==========> 
+//Incluir testes em ponteiro/BlockchainTest.c ==========> Guilherme Mendes 
 //=======================================================================================================================
 //Atenção: para rodar a Blockchain sem alteração, conforme exemplo em: http://www.jppreti.com/2019/08/05/blockchain/
 //é necessário:
