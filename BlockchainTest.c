@@ -23,10 +23,15 @@ int main() {
     Block *newBlock5 = generateNextBlock(&blockchain,45.0);
     addBlock(&blockchain, newBlock5);
 
+Block *newBlock6 = generateNextBlock(&blockchain,12.0);
+    addBlock(&blockchain, newBlock6);
+
     printf("Block 4 is valid? %i\n",isValidNewBlock(newBlock4, blockchain.genesisBlock));
     //newBlock2->data = 74.00;
 
     printf("Block 5 is valid? %i\n",isValidNewBlock(newBlock5, blockchain.genesisBlock));
+
+    printf("Block 6 is valid? %i\n",isValidNewBlock(newBlock6, blockchain.genesisBlock));
 
     printf("Blockchain is valid? %i\n",isBlockchainValid(&blockchain));
     printf("size: %u\n",blockchain.latestBlock->index);
