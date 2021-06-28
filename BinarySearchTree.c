@@ -29,7 +29,15 @@ int find(TreeNode *root, void *key, TreeComparator f, void **element) {
 }
 
 
-//void in_order
+//in_order by Leandro Klein - é passado o nó raiz, se nào for nula a funçao é chamada novamente para esquerda, indo por este caminho até encontrar nulo. 
+//Quando não tiver mais a esquer, imprime o nó.
+void in_order(TreeNode *root, printNode print) {
+    if (root!=NULL) {
+        in_order(root->left, print);
+        print(root->element);
+        in_order(root->right, print);
+    }
+}
 
 
 
