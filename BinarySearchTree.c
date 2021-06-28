@@ -41,8 +41,12 @@ void in_order(TreeNode *root, printNode print) {
 
 
 
-//void pre_order
-
+//void pre_order by Matheus Santiago : imprime os elementos raiz esquerda direita, é passado o nó raiz, caso nao encontre nulo, imprimo o nó e caminha para esquerda e direita.
+void pre_order(TreeNode *root, printNode print){
+	if (root !=NULL){
+		print(root->element);
+		pre_order(root->left,print);
+		pre_order(root->right,print);}}
 
 
 //void post_order
