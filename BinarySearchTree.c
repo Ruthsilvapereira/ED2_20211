@@ -49,8 +49,14 @@ void pre_order(TreeNode *root, printNode print){
 		pre_order(root->right,print);}}
 
 
-//void post_order
-
+//void post_order by Carlos Henrique Teixeira Carneiro : Passa o nó raiz, caso não encontre valor nulo, caminha para a esquerda e para a direita e imprime o nó.
+void post_order(TreeNode *root, printNode print) {
+    if (root!=NULL) {
+        post_order(root->left, print);
+        post_order(root->right, print);
+        print(root->element);
+    }
+}
 
 //TreeNode *greaterRight
 
