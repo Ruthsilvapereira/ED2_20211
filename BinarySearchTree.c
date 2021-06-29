@@ -23,7 +23,7 @@
 //              smallerLeft ======>
 //              removeTreeNode ======> Lucio Lisboa
 //              height ======>Gabriel Robert
-//              destroy ======>
+//              destroy ======>José Guilherme
 
 //============================================================================================================
 
