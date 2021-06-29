@@ -77,8 +77,8 @@ TreeNode *greaterRight(TreeNode **no){
 //TreeNode *smallerLeft
 
 
-//int removeTreeNode
-
+//Função removeTreeNode por Lucio Lisboa. Função com intuito de remover um nó da arvoré
+int removeTreeNode(TreeNode **root, void *key, TreeComparator f) 
 
 
 //int height
