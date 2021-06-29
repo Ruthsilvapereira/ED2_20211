@@ -58,7 +58,20 @@ void post_order(TreeNode *root, printNode print) {
     }
 }
 
-//TreeNode *greaterRight
+//TreeNode *greaterRight (by Wallatan França)
+
+TreeNode *greaterRight(TreeNode **no){
+    if((*no)->right != NULL)
+        return greaterRight(&(*no)->right);
+    else{
+        TreeNode *aux = *no;
+        if((*no)->left != NULL) // se nao houver essa verificacao, esse nó vai perder todos os seus filhos da esquerda!
+            *no = (*no)->left;
+        else
+            *no = NULL;
+        return aux;
+    }
+}
 
 
 //TreeNode *smallerLeft
