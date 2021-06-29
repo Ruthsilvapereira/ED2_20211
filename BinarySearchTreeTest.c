@@ -1,5 +1,6 @@
 //BinarySearchTreeTest.c
 //Implementação de forma colaborativa
+//biblioteca assert : testa e capturar erros lógicos, verificar os resultados inseridos e retorna se houver erro 
 #include <assert.h>
 #include <string.h>
 #include "BinarySearchTree.h"
