@@ -20,7 +20,7 @@
 //              pre_order ======> Matheus Santiago
 //              post_order ======> Carlos Henrique Teixeira Carneiro
 //              greaterRight ======> Wallatan França
-//              smallerLeft ======>
+//              smallerLeft ======> Thiago Ramalho
 //              removeTreeNode ======> Lucio Lisboa
 //              height ======>Gabriel Robert
 //              destroy ======>José Guilherme
@@ -162,3 +162,7 @@ int removeTreeNode(TreeNode **root, void *key, TreeComparator f)
 
 
 // void destroy
+
+	//função smallerLeft (Thiago Ramalho) ela é usada com a ideia de pré-calcular a contagem de elementos menores consecutivos à esquerda e à direita para cada elemento existente na matriz, significa que se um elemento à esquerda desse elemento também seram menores que o elemento atual
+if (arr [i-1] <arr [i])
+    smallLeft [i] = menorLeft [i-1] + 1
