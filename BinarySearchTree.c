@@ -22,7 +22,7 @@
 //              greaterRight ======> Wallatan França
 //              smallerLeft ======>
 //              removeTreeNode ======> Lucio Lisboa
-//              height ======>
+//              height ======>Gabriel Robert
 //              destroy ======>
 
 //============================================================================================================
