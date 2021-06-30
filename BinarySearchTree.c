@@ -22,8 +22,8 @@
 //              greaterRight ======> Wallatan França
 //              smallerLeft ======> Thiago Ramalho
 //              removeTreeNode ======> Lucio Lisboa
-//              height ======> Gabriel Robert, Alessandra Mirelle, Vinicius Matusita
-//              destroy ======>José Guilherme
+//              height ======>  Alessandra Mirelle, Vinicius Matusita
+//              destroy ======>José Guilherme, Gabriel Robert
 
 //Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Guilherme Mendes, Hans Maciel
 //============================================================================================================
@@ -41,7 +41,7 @@
 
 //Duplas: Ruth e (deixe seu nome, caso tenha interesse)
 //Duplas: Vinicius e Alessandra Mirelle 
-//Duplas: 
+//Duplas: Gabriel Robert e José guilherme
 //Duplas:
 //Duplas: 
 //Duplas: Guilherme Mendes, Hans Maciel
@@ -171,7 +171,16 @@ int height (TreeNode *root) {
 }
 
 
-// void destroy
+// void destroy (by Gabriel Robert, José Guilherme)
+//navegar em pos-ordem
+void destroy (TreeNode **root) {
+    if (*root==NULL) return;
+    destroy(&(*root)->left);
+	
+ destroy(&(*root)->right);
+    free(*root);
+    *root=NULL;
+}
 
 	//função smallerLeft (Thiago Ramalho) ela é usada com a ideia de pré-calcular a contagem de elementos menores consecutivos à esquerda e à direita para cada elemento existente na matriz, significa que se um elemento à esquerda desse elemento também seram menores que o elemento atual
 if (arr [i-1] <arr [i])
