@@ -59,11 +59,9 @@
 //root: raiz 
 // * : ponteiro
 //usamos ponteiro e estruturas vistas anteriores na aplicação da Árvore Binária de Busca
-int add(TreeNode **root, void *element, TreeComparator f) {
 
- }
+int add(TreeNode **root, void *element, TreeComparator f) {
     if ((*root) == NULL) {
-        // alcançou o local da folha, atualiza o pai
         TreeNode *newnode = (TreeNode *) malloc(sizeof(TreeNode));
         if (newnode == NULL)
             return 0;
@@ -72,7 +70,7 @@ int add(TreeNode **root, void *element, TreeComparator f) {
         *root = newnode;
         return 1;
     }
-
+    
     int compvalue = f(element, (*root)->element);
     if (compvalue > 0) {
         return add(&(*root)->right, element, f);
@@ -81,7 +79,7 @@ int add(TreeNode **root, void *element, TreeComparator f) {
     } else {
         return -1;
     }
-
+    
 }
 
 // find by Wenderson Farias // esta função procura um dado na árvore, precisa de 4 elementos para funcionar
@@ -107,7 +105,6 @@ int find(TreeNode *root, void *key, TreeComparator f, void **element) {
     return find(root->left, key, f, element);
 }
 
-
 //in_order by Leandro Klein - é passado o nó raiz, se nao encontrar nulo, a funçao é chamada novamente para esquerda, indo por este caminho até encontrar nulo. 
 //Quando não tiver mais a esquerda, imprime o nó.
 void in_order(TreeNode *root, printNode print) {
@@ -118,15 +115,14 @@ void in_order(TreeNode *root, printNode print) {
     }
 }
 
-
-
 //void pre_order by Matheus Santiago : imprime os elementos raiz esquerda direita, é passado o nó raiz, caso nao encontre nulo, imprimo o nó e caminha para esquerda e direita.
 void pre_order(TreeNode *root, printNode print){
-	if (root !=NULL){
+	if (root!=NULL){
 		print(root->element);
 		pre_order(root->left,print);
-		pre_order(root->right,print);}}
-
+		pre_order(root->right,print);
+   }
+}
 
 //void post_order by Carlos Henrique Teixeira Carneiro : Passa o nó raiz, caso não encontre valor nulo, caminha para a esquerda e para a direita e imprime o nó.
 void post_order(TreeNode *root, printNode print) {
@@ -164,9 +160,6 @@ TreeNode *smallerLeft(TreeNode **no){
         return aux;
     }
 }
-
-//TreeNode *smallerLeft
-
 
 //Função removeTreeNode por Lucio Lisboa. Função com intuito de remover um nó da arvoré
 int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
@@ -231,4 +224,3 @@ void destroy (TreeNode **root) {
     free(*root);
     *root=NULL;
 }
-

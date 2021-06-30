@@ -64,28 +64,28 @@ int main(int argc, char **argv) {
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == -1);
     
-     el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
-     assert(el != NULL);
-     el->key = 48;
-     snprintf(el->value, 10, "Val 48");
-     assert(add(tree, el, &BinarySearchTreeElementComparator, &tree) == 1);
-     assert(add(tree, el, &BinarySearchTreeElementComparator, &tree) == -1);
+    el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
+    assert(el != NULL);
+    el->key = 48;
+    snprintf(el->value, 10, "Val 48");
+    assert(add(tree, el, &BinarySearchTreeElementComparator, &tree) == 1);
+    assert(add(tree, el, &BinarySearchTreeElementComparator, &tree) == -1);
     
-el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
+	el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
     assert(el != NULL);
     el->key = 44;
     snprintf(el->value, 10, "Val 44");
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == -1);
 
-  el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
+    el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
     assert(el != NULL);
     el->key = 12;
     snprintf(el->value, 10, "Val 12");
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
     assert(add(&tree, el, &BinarySearchTreeElementComparator) == -1);
 
-el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
+    el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
     assert(el != NULL);
     el->key = 22;
     snprintf(el->value, 10, "Val 22");
