@@ -220,8 +220,8 @@ int height (TreeNode *root) {
 void destroy (TreeNode **root) {
     if (*root==NULL) return;
     destroy(&(*root)->left);
-    destroy(&(*root)->right);
-    free(*root);
+    destroy(&(*root)->right); // metodo 'destroy' recebe raiz direita por recursividade
+    free(*root); // funcao 'free' disponibiliza (destroi) a memoria apontada, deixando livre para ser reutilizada
     *root=NULL;
 }
 
