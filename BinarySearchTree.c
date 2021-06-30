@@ -25,7 +25,6 @@
 //              height ======>Gabriel Robert
 //              destroy ======>José Guilherme
 
-//Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Guilherme Mendes
 //============================================================================================================
 
 //Duplas para proxima atividade: 
@@ -158,8 +157,11 @@ TreeNode *greaterRight(TreeNode **no){
 int removeTreeNode(TreeNode **root, void *key, TreeComparator f) 
 
 
-//int height
-
+//função int height por Alessandra Mirelle. Função com intuito de ver a altura da arvore. 
+int height (TreeNode *root) {
+    if (root == NULL)
+        return -1; // altura da árvore estando vazia.
+    
 
 
 // void destroy
