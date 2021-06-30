@@ -216,7 +216,7 @@ int height (TreeNode *root) {
     }
 }
 
-//navegar em pos-ordem
+//navegar em pos-ordem (by José Guilherme Neves, Gabriel Robert)
 void destroy (TreeNode **root) {
     if (*root==NULL) return;
     destroy(&(*root)->left);
