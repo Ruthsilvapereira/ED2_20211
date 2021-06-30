@@ -26,6 +26,7 @@
 //              destroy ======>José Guilherme, Gabriel Robert
 
 //Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Guilherme Mendes, Hans Maciel
+//Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Eduardo Hideki
 //============================================================================================================
 
 //Duplas para proxima atividade: 
@@ -43,7 +44,7 @@
 //Duplas: Vinicius e Alessandra Mirelle 
 //Duplas: Gabriel Robert e José guilherme
 //Duplas:
-//Duplas: 
+//Duplas: Eduardo Hideki
 //Duplas: Guilherme Mendes, Hans Maciel
 
 //============================================================================================================
