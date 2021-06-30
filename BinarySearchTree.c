@@ -22,7 +22,7 @@
 //              greaterRight ======> Wallatan França
 //              smallerLeft ======> Thiago Ramalho
 //              removeTreeNode ======> Lucio Lisboa
-//              height ======> Gabriel Robert, Alessandra Mirelle
+//              height ======> Gabriel Robert, Alessandra Mirelle, Vinicius Matusita
 //              destroy ======>José Guilherme
 
 //============================================================================================================
