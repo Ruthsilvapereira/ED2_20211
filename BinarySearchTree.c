@@ -170,12 +170,16 @@ int height (TreeNode *root) {
 }
 
 
-// void destroy (by Gabriel Robert)
+// void destroy (by Gabriel Robert, José Guilherme)
 //navegar em pos-ordem
 void destroy (TreeNode **root) {
     if (*root==NULL) return;
     destroy(&(*root)->left);
-
+	
+ destroy(&(*root)->right);
+    free(*root);
+    *root=NULL;
+}
 
 	//função smallerLeft (Thiago Ramalho) ela é usada com a ideia de pré-calcular a contagem de elementos menores consecutivos à esquerda e à direita para cada elemento existente na matriz, significa que se um elemento à esquerda desse elemento também seram menores que o elemento atual
 if (arr [i-1] <arr [i])
