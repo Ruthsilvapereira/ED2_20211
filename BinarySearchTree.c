@@ -204,10 +204,10 @@ int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
     return 1;
 }
 
-//int height
+//função int height por Alessandra Mirelle. Função com intuito de ver a altura da arvore. 
 int height (TreeNode *root) {
     if (root == NULL)
-        return -1; // altura da árvore vazia
+        return -1; // altura da árvore estando vazia.
     else {
         int hl = height(root->left); //Calcula a altura da arvore para esquerda
         int hr = height(root->right); //Calcula a altura da arvore para direita
