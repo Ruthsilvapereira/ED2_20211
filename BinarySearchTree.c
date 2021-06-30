@@ -177,9 +177,9 @@ void destroy (TreeNode **root) { //root é do tipo TreeNode, e representa a raí
     if (*root==NULL) return; // se (*root==NULL) for verdadeiro, quer dizer que alcaçamos a extremidade da árvore.
     destroy(&(*root)->left);// destroy(&(*root) recebe o left em recursivade.
 
-    destroy(&(*root)->right); // metodo 'destroy' recebe a raiz direita em recursividade.
-    free(*root); 
-    *root=NULL;
+    destroy(&(*root)->right); // metodo 'destroy' recebe o endereco de memoria da raiz direita em recursividade.
+    free(*root); // funcao 'free' libera (destroi) o endereco da memoria apontada, deixando livre para ser reutilizada.
+    *root=NULL; 
 }
 
 	//função smallerLeft (Thiago Ramalho) ela é usada com a ideia de pré-calcular a contagem de elementos menores consecutivos à esquerda e à direita para cada elemento existente na matriz, significa que se um elemento à esquerda desse elemento também seram menores que o elemento atual
