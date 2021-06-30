@@ -157,11 +157,17 @@ TreeNode *greaterRight(TreeNode **no){
 int removeTreeNode(TreeNode **root, void *key, TreeComparator f) 
 
 
-//função int height por Alessandra Mirelle. Função com intuito de ver a altura da arvore. 
+//função int height por Alessandra Mirelle, Vinicius Matusita. Função com intuito de ver a altura da arvore. 
 int height (TreeNode *root) {
     if (root == NULL)
         return -1; // altura da árvore estando vazia.
-    
+    else {
+        int hl = height(root->left); //Calcula a altura da arvore para esquerda
+        int hr = height(root->right); //Calcula a altura da arvore para direita
+        if (hl < hr) return hr + 1;
+        else return hl + 1;
+    }
+}
 
 
 // void destroy
