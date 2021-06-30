@@ -23,7 +23,7 @@
 //              smallerLeft ======> RUTH (30/06)
 //              removeTreeNode ======> Lucio Lisboa
 //              height ======> Alessandra Mirelle, Vinicius Matusita
-//              destroy ======> RUTH (30/06)
+//              destroy ======> José Guilherme, Gabriel Robert
 
 //============================================================================================================
 
