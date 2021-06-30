@@ -39,7 +39,7 @@
 // Árvore B
 
 //Duplas: Ruth e (deixe seu nome, caso tenha interesse)
-//Duplas: 
+//Duplas: Vinicius e (deixe seu nome, caso tenha interesse)
 //Duplas: 
 //Duplas:
 //Duplas: 
