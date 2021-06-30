@@ -1,87 +1,9 @@
-//Árvore Binária de Busca
-//Anteriormente vimos Hash
-//Hash: busca com a chave completa
-//Veremos agora uma forma diferente de BUSCA (Árvore de Busca)
-//Árvore de Busca: busca tranquilamente por intervalo, pois está em ordem. 
-//Árvore: POSSUI O NÓ RAIZ (NÓ PAI), TEM APENAS UM. Seus decedentes são sub-arvores (NÓ FILHOS)
-//Grau de NÓ: quantidade de filhos (SUB-ARVORES)
-//NÓ FOLHA: GRAU DE NÓ=0 
-//Árvore Binária de Busca: usamos conceitos já visto, Ponteiros, Lista e Hash
-//Árvore Binária: permite busca em varias direcoes, depende da forma que usar os ponteiros (Bidirecional)
-
-//Visualizador online de Árvore Binária de Busca
-//Disponivel em: https://www.cs.usfca.edu/~galles/visualization/BST.html
-//teste nesse site permite uma visualização do comportamento da Árvore de Busca
-
-// Deixe seu nome na função implemantada e comente tudo para melhor entendimento dos demais.
-//		add =======> Ruth
-//              find ======> Wenderson Farias
-//              in_order ======> Leandro Klein
-//              pre_order ======> Matheus Santiago
-//              post_order ======> Carlos Henrique Teixeira Carneiro
-//              greaterRight ======> Wallatan França
-//              smallerLeft ======> Thiago Ramalho
-//              removeTreeNode ======> Lucio Lisboa
-//              height ======>  Alessandra Mirelle, Vinicius Matusita
-//              destroy ======>José Guilherme, Gabriel Robert
-
-//Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Guilherme Mendes, Hans Maciel
-//Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Eduardo Hideki
-//============================================================================================================
-
-//Duplas para proxima atividade: 
-
-//Implementação em Dupla de trabalho valendo 40% da nota final que envolve o estudo e implementação sobre:
-
-// Lista Generalizada (autocomplete)
-// Gráfico de espalhamento da tabela hash
-// Árvore para compressão de dados
-// Árvore de Busca Balanceada (AVL)
-// Árvore Rubro-negra
-// Árvore B
-
-//Duplas: Ruth e (deixe seu nome, caso tenha interesse)
-//Duplas: Vinicius e Alessandra Mirelle 
-//Duplas: Gabriel Robert e José guilherme
-//Duplas:
-//Duplas: Eduardo Hideki
-//Duplas: Guilherme Mendes, Hans Maciel
-
-//============================================================================================================
-
-//Inicio: Árvore Binária de Busca (.c)
-
-//biblioteca
-
 #include "BinarySearchTree.h"
 
-//Começando a nossa Árvore Binária de Busca
-//função add em Árvore Binária de Busca: adiciona um novo elemento na árvore
-//root: raiz 
-// * : ponteiro
-//usamos ponteiro e estruturas vistas anteriores na aplicação da Árvore Binária de Busca
+//add -----> RUTH
 int add(TreeNode **root, void *element, TreeComparator f) {
-    if ((*root) == NULL) {
-        // alcançou o local da folha, atualiza o pai
-        TreeNode *newnode = (TreeNode *) malloc(sizeof(TreeNode));
-        if (newnode == NULL)
-            return 0;
-        newnode->element = element;
-        newnode->left = newnode->right = NULL;
-        *root = newnode;
-        return 1;
-    }
-    
-    int compvalue = f(element, (*root)->element);
-    if (compvalue > 0) {
-        return add(&(*root)->right, element, f);
-    } else if (compvalue < 0) {
-        return add(&(*root)->left, element, f);
-    } else {
-        return -1;
-    }
-    
-}
+
+ }
 
 // find by Wenderson Farias // esta função procura um dado na árvore, precisa de 4 elementos para funcionar
 //sendo eles 'root, 'key', 'f', e 'element'.
@@ -156,33 +78,50 @@ TreeNode *greaterRight(TreeNode **no){
 
 
 //Função removeTreeNode por Lucio Lisboa. Função com intuito de remover um nó da arvoré
-int removeTreeNode(TreeNode **root, void *key, TreeComparator f) 
-
-
-//função int height por Alessandra Mirelle, Vinicius Matusita. Função com intuito de ver a altura da arvore. 
-int height (TreeNode *root) {
-    if (root == NULL)
-        return -1; // altura da árvore estando vazia.
-    else {
-        int hl = height(root->left); //Calcula a altura da arvore para esquerda
-        int hr = height(root->right); //Calcula a altura da arvore para direita
-        if (hl < hr) return hr + 1;
-        else return hl + 1;
+int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
+    if(*root == NULL){   // caso a chave nao exista na arvore
+        return 0;
     }
+    int compvalue = f(key, (*root)->element);
+    if(compvalue < 0)
+        removeTreeNode(&(*root)->left, key, f);
+    else {
+        if(compvalue > 0) {
+            removeTreeNode(&(*root)->right, key, f);
+        } else {    // se nao eh igual
+            TreeNode *aux = *root;
+            // Se nao tem filhos
+            if (((*root)->left == NULL) && ((*root)->right == NULL)){
+                free(aux);
+                (*root) = NULL;
+            }
+            else{ // so tem o filho da direita
+                if ((*root)->left == NULL){
+                    (*root) = (*root)->right;
+                    aux->right = NULL;
+                    free(aux); aux = NULL;
+                } else { //so tem filho da esquerda
+                    if ((*root)->right == NULL){
+                        (*root) = (*root)->left;
+                        aux->left = NULL;
+                        free(aux); aux = NULL;
+                    }
+                    else{ //Busco o maior filho à direita da subarvore esquerda.
+                        aux = greaterRight(&(*root)->left);
+                        aux->left = (*root)->left;
+                        aux->right = (*root)->right;
+                        (*root)->left = (*root)->right = NULL;
+                        free((*root));  *root = aux;  aux = NULL;
+                    }
+                }
+            }
+        }
+    }
+    return 1;
 }
 
+//int height
 
-// void destroy (by Gabriel Robert, José Guilherme)
-//navegar em pos-ordem
-void destroy (TreeNode **root) { //o método destroy recebe root do tipo TreeNode, e representa a raíz da árvore, o ponteiro duplo será necessario para atualizar o "nó principal" ou "nó pai".
-    if (*root==NULL) return; // se (*root==NULL) for verdadeiro, quer dizer que alcaçamos a extremidade da árvore.
-    destroy(&(*root)->left);// metodo 'destroy' recebe o endereco de memoria da raiz esquerda em recursividade.
 
-    destroy(&(*root)->right); // metodo 'destroy' recebe o endereco de memoria da raiz direita em recursividade.
-    free(*root); // funcao 'free' libera (destroi) o endereco da memoria apontada, deixando livre para ser reutilizada.
-    *root=NULL; 
-}
 
-	//função smallerLeft (Thiago Ramalho) ela é usada com a ideia de pré-calcular a contagem de elementos menores consecutivos à esquerda e à direita para cada elemento existente na matriz, significa que se um elemento à esquerda desse elemento também seram menores que o elemento atual
-if (arr [i-1] <arr [i])
-    smallLeft [i] = menorLeft [i-1] + 1
+// void destroy
