@@ -176,9 +176,9 @@ int height (TreeNode *root) {
 void destroy (TreeNode **root) {
     if (*root==NULL) return; // se (*root==NULL) for verdadeiro, quer dizer que alcaçamos a extremidade da árvore.
     destroy(&(*root)->left);// destroy(&(*root) recebe o left em recursivade.
-	
- destroy(&(*root)->right);
-    free(*root);
+
+    destroy(&(*root)->right); // metodo 'destroy' recebe a raiz direita em recursividade.
+    free(*root); 
     *root=NULL;
 }
 
