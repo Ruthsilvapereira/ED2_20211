@@ -25,6 +25,7 @@
 //              height ======> Gabriel Robert, Alessandra Mirelle, Vinicius Matusita
 //              destroy ======>José Guilherme
 
+//Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Guilherme Mendes, Hans Maciel
 //============================================================================================================
 
 //Duplas para proxima atividade: 
@@ -43,7 +44,7 @@
 //Duplas: 
 //Duplas:
 //Duplas: 
-//Duplas: Guilherme Mendes 
+//Duplas: Guilherme Mendes, Hans Maciel
 
 //============================================================================================================
 
