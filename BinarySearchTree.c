@@ -40,7 +40,7 @@
 
 //Duplas: Ruth e (deixe seu nome, caso tenha interesse)
 //Duplas: Vinicius e Alessandra Mirelle 
-//Duplas: 
+//Duplas: Gabriel Robert e José guilherme
 //Duplas:
 //Duplas: 
 //Duplas: Guilherme Mendes 
