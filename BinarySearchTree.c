@@ -173,7 +173,7 @@ int height (TreeNode *root) {
 
 // void destroy (by Gabriel Robert, José Guilherme)
 //navegar em pos-ordem
-void destroy (TreeNode **root) {
+void destroy (TreeNode **root) { //root é do tipo TreeNode, e representa a raíz da árvore, o ponteiro dublo será necessario para atualizar o "nó principal" ou "nó pai".
     if (*root==NULL) return; // se (*root==NULL) for verdadeiro, quer dizer que alcaçamos a extremidade da árvore.
     destroy(&(*root)->left);// destroy(&(*root) recebe o left em recursivade.
 
