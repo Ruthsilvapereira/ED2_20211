@@ -25,6 +25,7 @@
 //              height ======>Gabriel Robert
 //              destroy ======>José Guilherme
 
+//Incluir testes em ponteiro/BinarySearchTreeTest.c ==========> Guilherme Mendes
 //============================================================================================================
 
 //Duplas para proxima atividade: 
