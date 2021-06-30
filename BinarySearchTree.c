@@ -224,3 +224,10 @@ void destroy (TreeNode **root) {
     free(*root);
     *root=NULL;
 }
+
+// gcc BinarySearchTreeTest.c BinarySearchTree.h BinarySearchTree.c -o BinarySearchTree
+// ./BinarySearchTree
+// 12 22 44 48 50 53 55 60
+// 44 12 22 60 50 48 53 55
+// 22 12 48 55 53 50 60 44
+// Altura: 4
