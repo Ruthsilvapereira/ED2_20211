@@ -70,6 +70,14 @@ int main(int argc, char **argv) {
      snprintf(el->value, 10, "Val 48");
      assert(add(tree, el, &BinarySearchTreeElementComparator, &tree) == 1);
      assert(add(tree, el, &BinarySearchTreeElementComparator, &tree) == -1);
+    
+el = (BinarySearchTreeElement *) malloc(sizeof(BinarySearchTreeElement));
+    assert(el != NULL);
+    el->key = 44;
+    snprintf(el->value, 10, "Val 44");
+    assert(add(&tree, el, &BinarySearchTreeElementComparator) == 1);
+    assert(add(&tree, el, &BinarySearchTreeElementComparator) == -1);
+
     findEl.key = 50;
     assert(find(tree, (void *) &findEl, &BinarySearchTreeElementComparator,
                 (void **) &el) == 1);
@@ -89,6 +97,11 @@ int main(int argc, char **argv) {
     assert(find(tree, &findEl, &BinarySearchTreeElementComparator,
                 (void **) &el) == 1);
     assert(strcmp(el->value, "Val 60") == 0);
+
+     findEl.key = 44;
+    assert(find(tree, (void *) &findEl, &BinarySearchTreeElementComparator,
+                (void **) &el) == 1);
+    assert(strcmp(el->value, "Val 44") == 0);
     
     // Tentativa que não encontra na árvore
     findEl.key = 10;
