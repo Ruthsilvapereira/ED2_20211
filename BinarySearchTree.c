@@ -216,10 +216,11 @@ int height (TreeNode *root) {
     }
 }
 
-//navegar em pos-ordem (by José Guilherme Neves, Gabriel Robert)
-void destroy (TreeNode **root) { // recebe (TreeNode **root)do tipo TreeNode, representa a raiz da árvore ou subárvore, e o ponteiro duplo será necessário para atualizarmos o nó pai.
-    if (*root==NULL) return;//se (*root==NULL) for verdadeira, quer dizer que alcançamos alguma extremidade da árvore.
-    destroy(&(*root)->left);//metodo 'destroy' recebe raiz esquerdo por recursividade.
+// void destroy (by Gabriel Robert, José Guilherme)
+//navegar em pos-ordem
+void destroy (TreeNode **root) { //o método destroy recebe root do tipo TreeNode, e representa a raíz da árvore, o ponteiro duplo será necessario para atualizar o "nó principal" ou "nó pai".
+    if (*root==NULL) return; // se (*root==NULL) for verdadeiro, quer dizer que alcaçamos a extremidade da árvore.
+    destroy(&(*root)->left);// metodo 'destroy' recebe o endereco de memoria da raiz esquerda em recursividade.
 
     destroy(&(*root)->right); // metodo 'destroy' recebe raiz direita por recursividade
     free(*root); // funcao 'free' disponibiliza (destroi) a memoria apontada, deixando livre para ser reutilizada
