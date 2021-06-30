@@ -22,7 +22,7 @@
 //              greaterRight ======> Wallatan França
 //              smallerLeft ======> RUTH (30/06)
 //              removeTreeNode ======> Lucio Lisboa
-//              height ======> RUTH (30/06)
+//              height ======> Alessandra Mirelle, Vinicius Matusita
 //              destroy ======> RUTH (30/06)
 
 //============================================================================================================
@@ -39,7 +39,7 @@
 // Árvore B
 
 //Duplas: Ruth e (deixe seu nome, caso tenha interesse)
-//Duplas: 
+//Duplas: Alessandra Mirelle, Vinicius Matusita
 //Duplas: 
 //Duplas:
 //Duplas: 
@@ -209,8 +209,8 @@ int height (TreeNode *root) {
     if (root == NULL)
         return -1; // altura da árvore vazia
     else {
-        int hl = height(root->left); //altura esquerda
-        int hr = height(root->right); //altura direita
+        int hl = height(root->left); //Calcula a altura da arvore para esquerda
+        int hr = height(root->right); //Calcula a altura da arvore para direita
         if (hl < hr) return hr + 1;
         else return hl + 1;
     }
