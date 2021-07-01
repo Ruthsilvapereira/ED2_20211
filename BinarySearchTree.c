@@ -38,7 +38,7 @@
 // Árvore Rubro-negra
 // Árvore B
 
-//Duplas: Ruth e (deixe seu nome, caso tenha interesse)
+//Duplas: Ruth e Zhaira
 //Duplas: Alessandra Mirelle, Vinicius Matusita
 //Duplas: 
 //Duplas:
