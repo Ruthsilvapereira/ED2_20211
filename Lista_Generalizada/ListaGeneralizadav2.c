@@ -1,4 +1,4 @@
-//Lista generalizadas
+//Lista generalizadas by Matheus Santiago e Thiago Ramalho
 #include <stdlib.h>
 #include <stdio.h>
 
