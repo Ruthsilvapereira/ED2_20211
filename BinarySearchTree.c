@@ -1,9 +1,86 @@
+//Árvore Binária de Busca
+//Anteriormente vimos Hash
+//Hash: busca com a chave completa
+//Veremos agora uma forma diferente de BUSCA (Árvore de Busca)
+//Árvore de Busca: busca tranquilamente por intervalo, pois está em ordem. 
+//Árvore: POSSUI O NÓ RAIZ (NÓ PAI), TEM APENAS UM. Seus decedentes são sub-arvores (NÓ FILHOS)
+//Grau de NÓ: quantidade de filhos (SUB-ARVORES)
+//NÓ FOLHA: GRAU DE NÓ=0 
+//Árvore Binária de Busca: usamos conceitos já visto, Ponteiros, Lista e Hash
+//Árvore Binária: permite busca em varias direcoes, depende da forma que usar os ponteiros (Bidirecional)
+
+//Visualizador online de Árvore Binária de Busca
+//Disponivel em: https://www.cs.usfca.edu/~galles/visualization/BST.html
+//teste nesse site permite uma visualização do comportamento da Árvore de Busca
+
+// Deixe seu nome na função implemantada e comente tudo para melhor entendimento dos demais.
+//		add =======> Ruth
+//              find ======> Wenderson Farias
+//              in_order ======> Leandro Klein
+//              pre_order ======> Matheus Santiago
+//              post_order ======> Carlos Henrique Teixeira Carneiro
+//              greaterRight ======> Wallatan França
+//              smallerLeft ======> RUTH (30/06)
+//              removeTreeNode ======> Lucio Lisboa
+//              height ======> Alessandra Mirelle, Vinicius Matusita
+//              destroy ======> José Guilherme, Gabriel Robert
+
+//============================================================================================================
+
+//Duplas para proxima atividade: 
+
+//Implementação em Dupla de trabalho valendo 40% da nota final que envolve o estudo e implementação sobre:
+
+// Lista Generalizada (autocomplete)
+// Gráfico de espalhamento da tabela hash
+// Árvore para compressão de dados
+// Árvore de Busca Balanceada (AVL)
+// Árvore Rubro-negra
+// Árvore B
+
+//Duplas: Ruth e Zhaira
+//Duplas: Alessandra Mirelle, Vinicius Matusita
+//Duplas: 
+//Duplas:
+//Duplas: 
+//Duplas: 
+
+//============================================================================================================
+
+//Inicio: Árvore Binária de Busca (.c)
+
+//biblioteca
+
 #include "BinarySearchTree.h"
 
 //add -----> RUTH
-int add(TreeNode **root, void *element, TreeComparator f) {
+//Começando a nossa Árvore Binária de Busca
+//função add em Árvore Binária de Busca: adiciona um novo elemento na árvore
+//root: raiz 
+// * : ponteiro
+//usamos ponteiro e estruturas vistas anteriores na aplicação da Árvore Binária de Busca
 
- }
+int add(TreeNode **root, void *element, TreeComparator f) {
+    if ((*root) == NULL) {
+        TreeNode *newnode = (TreeNode *) malloc(sizeof(TreeNode));
+        if (newnode == NULL)
+            return 0;
+        newnode->element = element;
+        newnode->left = newnode->right = NULL;
+        *root = newnode;
+        return 1;
+    }
+    
+    int compvalue = f(element, (*root)->element);
+    if (compvalue > 0) {
+        return add(&(*root)->right, element, f);
+    } else if (compvalue < 0) {
+        return add(&(*root)->left, element, f);
+    } else {
+        return -1;
+    }
+    
+}
 
 // find by Wenderson Farias // esta função procura um dado na árvore, precisa de 4 elementos para funcionar
 //sendo eles 'root, 'key', 'f', e 'element'.
@@ -28,7 +105,6 @@ int find(TreeNode *root, void *key, TreeComparator f, void **element) {
     return find(root->left, key, f, element);
 }
 
-
 //in_order by Leandro Klein - é passado o nó raiz, se nao encontrar nulo, a funçao é chamada novamente para esquerda, indo por este caminho até encontrar nulo. 
 //Quando não tiver mais a esquerda, imprime o nó.
 void in_order(TreeNode *root, printNode print) {
@@ -39,15 +115,14 @@ void in_order(TreeNode *root, printNode print) {
     }
 }
 
-
-
 //void pre_order by Matheus Santiago : imprime os elementos raiz esquerda direita, é passado o nó raiz, caso nao encontre nulo, imprimo o nó e caminha para esquerda e direita.
 void pre_order(TreeNode *root, printNode print){
-	if (root !=NULL){
+	if (root!=NULL){
 		print(root->element);
 		pre_order(root->left,print);
-		pre_order(root->right,print);}}
-
+		pre_order(root->right,print);
+   }
+}
 
 //void post_order by Carlos Henrique Teixeira Carneiro : Passa o nó raiz, caso não encontre valor nulo, caminha para a esquerda e para a direita e imprime o nó.
 void post_order(TreeNode *root, printNode print) {
@@ -73,9 +148,18 @@ TreeNode *greaterRight(TreeNode **no){
     }
 }
 
-
-//TreeNode *smallerLeft
-
+TreeNode *smallerLeft(TreeNode **no){
+    if((*no)->left != NULL)
+        return smallerLeft(&(*no)->left);
+    else{
+        TreeNode *aux = *no;
+        if((*no)->right != NULL)
+            *no = (*no)->right;
+        else
+            *no = NULL;
+        return aux;
+    }
+}
 
 //Função removeTreeNode por Lucio Lisboa. Função com intuito de remover um nó da arvoré
 int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
@@ -120,8 +204,32 @@ int removeTreeNode(TreeNode **root, void *key, TreeComparator f) {
     return 1;
 }
 
-//int height
+//função int height por Alessandra Mirelle. Função com intuito de ver a altura da arvore. 
+int height (TreeNode *root) {
+    if (root == NULL)
+        return -1; // altura da árvore estando vazia.
+    else {
+        int hl = height(root->left); //Calcula a altura da arvore para esquerda
+        int hr = height(root->right); //Calcula a altura da arvore para direita
+        if (hl < hr) return hr + 1;
+        else return hl + 1;
+    }
+}
 
+// void destroy (by Gabriel Robert, José Guilherme)
+//navegar em pos-ordem
+void destroy (TreeNode **root) { //o método destroy recebe root do tipo TreeNode, e representa a raíz da árvore, o ponteiro duplo será necessario para atualizar o "nó principal" ou "nó pai".
+    if (*root==NULL) return; // se (*root==NULL) for verdadeiro, quer dizer que alcaçamos a extremidade da árvore.
+    destroy(&(*root)->left);// metodo 'destroy' recebe o endereco de memoria da raiz esquerda em recursividade.
 
+    destroy(&(*root)->right);// metodo 'destroy' recebe o endereco de memoria da raiz direita em recursividade.
+    free(*root); // funcao 'free' libera (destroi) o endereco da memoria apontada, deixando livre para ser reutilizada.
+    *root=NULL;
+}
 
-// void destroy
+// gcc BinarySearchTreeTest.c BinarySearchTree.h BinarySearchTree.c -o BinarySearchTree
+// ./BinarySearchTree
+// 12 22 44 48 50 53 55 60
+// 44 12 22 60 50 48 53 55
+// 22 12 48 55 53 50 60 44
+// Altura: 4
