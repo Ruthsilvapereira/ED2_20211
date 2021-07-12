@@ -383,7 +383,7 @@ void menu_delete(red_black_tree *t) {
 	rb_delete(t, z);
 }
 
-// =========================================================================================================================================
+// =================================================================================================
 //As operações Inserir e Remover são mais complicadas nas Árvores Rubro-Negras porque elas podem ferir alguma propriedade deste tipo de árvore.
 //Ao fazer essas operações (Inserir e Remover) devemos respeitar algumas propriedades:
 //1. Todo nó é vermelho ou preto 
@@ -395,5 +395,5 @@ void menu_delete(red_black_tree *t) {
 //é necessario usar a RedBlackTree.c e a RedBlackTree.h
 //gcc RedBlackTree.c RedBlackTree.h -o RedBlackTree
 //./RedBlackTree
-//Recomendamos o simulador online de Árvore Rubro-Negra, disponivel em: https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
-// =========================================================================================================================================
+//Para melhor entendimento, recomendamos aos aluno o simulador online de Árvore Rubro-Negra, disponivel em: https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+// ==================================================================================================
